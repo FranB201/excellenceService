@@ -7,7 +7,7 @@ import 'react-native-gesture-handler';
 
 
 
-// Definiendo los componentes de las pantallas
+// Definiendo los componentes de las pantallas prueba
 function HomeScreen() {
 
   
