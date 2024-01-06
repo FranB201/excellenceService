@@ -52,8 +52,11 @@ function MyDrawer() {
 // Componente App
 export default function App() {
   return (
-    <NavigationContainer>
+    <>
+        <NavigationContainer>
       <MyDrawer />
     </NavigationContainer>
+    </>
+
   );
 }
