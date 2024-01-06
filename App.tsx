@@ -1,9 +1,9 @@
+import 'react-native-gesture-handler';
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import 'react-native-gesture-handler';
 
 
 
@@ -52,8 +52,11 @@ function MyDrawer() {
 // Componente App
 export default function App() {
   return (
-    <NavigationContainer>
+    <>
+        <NavigationContainer>
       <MyDrawer />
     </NavigationContainer>
+    </>
+
   );
 }
