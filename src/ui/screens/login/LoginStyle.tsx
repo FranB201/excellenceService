@@ -63,6 +63,12 @@ export const loginStyle = StyleSheet.create({
 
     }, 
 
+    loginInputsContainer: {
+
+       
+
+    }
+
 
 
 });

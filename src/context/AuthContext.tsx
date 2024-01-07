@@ -31,7 +31,6 @@ export const AuthProvider = ({ children } : any) => {
     
     const signIn = async ({ email, password }: LoginData) => {
         try {
-            console.log('entro')
           // Aquí puedes validar el usuario y la contraseña en lugar de realizar una solicitud a la base de datos
           if (email === 'admin' && password === '1234') {
             // Usuario válido

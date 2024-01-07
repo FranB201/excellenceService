@@ -20,7 +20,6 @@ type AuthAction =
 
    export const authReducer = ( state: AuthState, action: AuthAction ): AuthState => {
 
-
         switch (action.type) {
 
             case 'addError':

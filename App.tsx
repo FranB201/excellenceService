@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Navigator } from './src/ui/navigation/Navigator';
 import { AuthContext, AuthProvider } from './src/context/AuthContext';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ActivityIndicator, View } from 'react-native';
 
 
 const Stack = createStackNavigator();
@@ -25,8 +26,16 @@ const App = () => {
 
 
   useEffect(() => {
-    
+
   }, [status]);
+
+  if (status === 'checking') {
+    return (
+      <View>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
 
   return (
 
