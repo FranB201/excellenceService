@@ -14,7 +14,7 @@ export const LoginScreen = () => {
 
     const navigation = useNavigation();
     const [forgotEmail, setForgotEmail] = useState('');
-    const { signIn, errorMessage, removeError } = useContext(AuthContext);
+    const { signIn, errorMessage, removeError, status } = useContext(AuthContext);
 
     const { email, password, onChange } = useForm({
         email: '',
@@ -30,8 +30,12 @@ export const LoginScreen = () => {
             text: 'Ok',
             onPress: removeError
         }]);
+        if (status === 'authenticated') {
+            // Redirigir a la pantalla principal
+            navigation.navigate('Main');
+        }
 
-    }, [errorMessage])
+    }, [errorMessage, status, navigation])
 
 
     const onLogin = () => {
@@ -61,52 +65,56 @@ export const LoginScreen = () => {
             <Background>
                 <Logo />
                 <Text style={loginStyle.quote}>La excelencia en el servicio es el ingrendiente secreto que sazona la experiencia</Text>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Ionicons name="mail" size={20} color="#172B4D" style={{ margin: 10 }} />
-                    <TextInput
-                        placeholder="Email"
-                        keyboardType="email-address"
-                        style={[loginStyle.inputField, Platform.OS === 'ios' && loginStyle.inputFieldIOS,
-                        { color: 'black' }]}
-                        placeholderTextColor='black'
-                        selectionColor="white"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        onChangeText={(value) => {
-                            onChange(value, 'email');
-                            setForgotEmail(value);
-                        }}
 
-                        value={email}
-                        onSubmitEditing={onLogin}
-                    ></TextInput>
+                <View style={loginStyle.loginInputsContainer}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Ionicons name="mail" size={20} color="#ffff" style={{ margin: 10 }} />
+                        <TextInput
+                            placeholder="Email"
+                            keyboardType="email-address"
+                            style={[loginStyle.inputField, Platform.OS === 'ios' && loginStyle.inputFieldIOS,
+                            { color: 'white' }]}
+                            placeholderTextColor='white'
+                            selectionColor="white"
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            onChangeText={(value) => {
+                                onChange(value, 'email');
+                                setForgotEmail(value);
+                            }}
+
+                            value={email}
+                            onSubmitEditing={onLogin}
+                        ></TextInput>
+                    </View>
+
+                    <View style={loginStyle.inputContainer}>
+                        <Ionicons name="lock-closed" size={20} color="#ffff" style={{ margin: 10 }} />
+                        <TextInput
+                            placeholder="contraseña"
+                            keyboardType="email-address"
+                            style={[loginStyle.inputField, Platform.OS === 'ios' && loginStyle.inputFieldIOS,
+                            { color: 'white' }]}
+                            placeholderTextColor='white'
+                            selectionColor="white"
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            onChangeText={(value) => onChange(value, 'password')}
+                            value={password}
+                            onSubmitEditing={onLogin}
+                            secureTextEntry
+                        ></TextInput>
+
+                    </View>
+
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={loginStyle.button}
+                        onPress={onLogin}>
+                        <Text style={loginStyle.buttonText}>Log in</Text>
+                    </TouchableOpacity>
+
                 </View>
-
-                <View style={loginStyle.inputContainer}>
-                    <Ionicons name="lock-closed" size={20} color="#172B4D" style={{ margin: 10 }} />
-                    <TextInput
-                        placeholder="contraseña"
-                        keyboardType="email-address"
-                        style={[loginStyle.inputField, Platform.OS === 'ios' && loginStyle.inputFieldIOS,
-                        { color: 'black' }]}
-                        placeholderTextColor='black'
-                        selectionColor="white"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        onChangeText={(value) => onChange(value, 'password')}
-                        value={password}
-                        onSubmitEditing={onLogin}
-                        secureTextEntry
-                    ></TextInput>
-
-                </View>
-
-                <TouchableOpacity
-                    activeOpacity={0.8}
-                    style={loginStyle.button}
-                    onPress={onLogin}>
-                    <Text style={loginStyle.buttonText}>Log in</Text>
-                </TouchableOpacity>
             </Background>
 
         </KeyboardAwareScrollView>
