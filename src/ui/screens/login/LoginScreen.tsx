@@ -28,14 +28,12 @@ export const LoginScreen = () => {
             text: 'Ok',
             onPress: removeError
         }]);
-
-
         if (status === 'authenticated') {
             // Redirigir a la pantalla principal
             navigation.navigate('Main');
         }
 
-    }, [errorMessage, status, navigation])
+    }, [errorMessage])
 
 
     const onLogin = () => {
