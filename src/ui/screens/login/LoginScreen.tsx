@@ -23,17 +23,19 @@ export const LoginScreen = () => {
 
     useEffect(() => {
         if (!errorMessage) return;
-
+    
         Alert.alert('Login incorrecto', errorMessage, [{
             text: 'Ok',
             onPress: removeError
         }]);
+    }, [errorMessage, removeError]);
+    
+    useEffect(() => {
         if (status === 'authenticated') {
             // Redirigir a la pantalla principal
             navigation.navigate('Main');
         }
-
-    }, [errorMessage])
+    }, [status, navigation]);
 
 
     const onLogin = () => {
