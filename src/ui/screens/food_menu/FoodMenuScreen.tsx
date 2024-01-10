@@ -27,7 +27,6 @@ const data: Item[] = [
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
         numColumns={2}
-        style={styles.container}
       />
     );
   };
