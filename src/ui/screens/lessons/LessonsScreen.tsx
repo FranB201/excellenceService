@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, Vibration, View, ScrollView, FlatList, ListRenderItem } from 'react-native'
 import { Card } from '../../components/card_base/CardBase'
-import { styles } from './FoodMenuStyle'
+import { styles } from './LessonsStyle'
 interface Item {
     title: string;
     image: string;
@@ -20,7 +20,7 @@ const data: Item[] = [
     />
   );
   
-  export const FoodMenuScreen: React.FC = () => {
+  export const LessonsScreen: React.FC = () => {
     return (
       <FlatList
         data={data}
