@@ -1,7 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MyTabs from './TabNavigator';
-import { CustomHeader } from '../components/custom_header/CustomHeader';
+import {CustomDrawerContent} from '../components/custom_drawer_content/CustomDrawerContent';
 
 const Drawer = createDrawerNavigator();
 
@@ -9,11 +9,17 @@ const MyDrawer = () => (
         <Drawer.Navigator
         screenOptions={{
             drawerStyle: {
-            backgroundColor: '#c6cbef',
             },
             headerShown: false
+            
         }}
-        >
+        drawerContent={(props: { title: any; }) => {
+            // Asumiendo que el título se encuentra directamente en props
+            const { title } = props;
+            return <CustomDrawerContent title={title} />;
+        }}
+    >
+      
       <Drawer.Screen name="hello" component={MyTabs}   
       options={{
             // Opciones específicas para esta pantalla
