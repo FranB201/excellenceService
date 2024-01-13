@@ -4,21 +4,31 @@ import { InputAvatarStyle } from './InputAvatarStyle';
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Importa Ionicons
 
 
-export const InputAvatar = () => {
+export const InputAvatar = ({
+  placeh = '',
+}) => {
   return (
-    
+
     <View style={InputAvatarStyle.board}>
       <Image
-        source={require('../../assets/login/loginBackg.jpg')}
+        source={require('../../assets/avatarUser/avatar1.png')}
         style={InputAvatarStyle.image}
       />
       <TextInput
         style={InputAvatarStyle.input}
-        placeholder="Escribe algo..."
-        multiline={true} // Permite múltiples líneas
-        // Añade los manejadores de eventos que necesites
+        placeholder={placeh}
+        multiline={true}
       />
-  
+      <TouchableOpacity
+        onPress={() => console.log('Enviar mensaje')}
+        style={{justifyContent: 'center', marginRight:10}}
+      >
+        <Ionicons
+          name="send"
+          size={25}
+          color="#525F7F"
+        />
+      </TouchableOpacity>
     </View>
   );
 };

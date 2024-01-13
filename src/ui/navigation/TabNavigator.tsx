@@ -11,7 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const Tab = createBottomTabNavigator();
 
 const MyTabs = () => (
-  <Tab.Navigator >
+  <Tab.Navigator initialRouteName="Home" >
     <Tab.Screen 
       name="Formación" 
       options={{
