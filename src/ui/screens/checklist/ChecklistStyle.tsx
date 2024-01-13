@@ -3,8 +3,15 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
-      // Estilos adicionales si son necesarios
     },
+
+    headerStyle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color:'white',
+      padding: 10,
+      backgroundColor: '#525F7F',
+  },
 
   });
   

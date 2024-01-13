@@ -28,7 +28,7 @@ interface ListItem {
       name: 'Catherine Marin',
       messageText: 'Buenas!, Queria daros la enhorabuena por el gran trabajo de estas fiestas!, Seguir así equipazo! 💪',
       date: '14 ene',
-      avatarUri: 'avatar1',
+      avatarUri: 'avatar3',
     },
      {
       type: 'message',
@@ -42,7 +42,7 @@ interface ListItem {
       name: 'Jose Luis',
       messageText: 'Buenas tardes, recordad que esta semana tenemos que vender mucho solomillo, ánimo, Podemos!!',
       date: '22 dic',
-      avatarUri: 'avatar3',
+      avatarUri: 'avata1',
     },
 ];
 
