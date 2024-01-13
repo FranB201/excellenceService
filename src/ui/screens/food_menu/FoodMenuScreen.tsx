@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, Vibration, View, ScrollView, FlatList, ListRenderItem } from 'react-native'
 import { Card } from '../../components/card_base/CardBase'
 import { styles } from './FoodMenuStyle'
+import { MenuCategories } from '../../components/menu_categories/MenuCategories';
 interface Item {
     title: string;
     image: string;
@@ -10,6 +11,11 @@ interface Item {
 const data: Item[] = [
     { title: "Arroz Caldoso", image: '', rating: "4.8" },
     { title: "Paella", image: '', rating: "4.7" },
+    { title: "Paella", image: '', rating: "4.7" },
+    { title: "Paella", image: '', rating: "4.7" },
+    { title: "Paella", image: '', rating: "4.7" },
+    { title: "Paella", image: '', rating: "4.7" },
+    { title: "Paella", image: '', rating: "4.7" },
     // ... más datos de tus tarjetas
   ];
   const renderItem: ListRenderItem<Item> = ({ item }) => (
@@ -17,16 +23,21 @@ const data: Item[] = [
       title={item.title}
       image={item.image}
       rating={item.rating}
+      
     />
   );
   
   export const FoodMenuScreen: React.FC = () => {
     return (
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-        numColumns={2}
-      />
+        <View>
+            <MenuCategories></MenuCategories>
+            <FlatList
+                data={data}
+                renderItem={renderItem}
+                keyExtractor={(item, index) => index.toString()}
+                numColumns={2}
+            />
+        </View>
+
     );
   };
