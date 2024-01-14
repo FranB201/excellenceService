@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   categoryButton: {
     marginRight: 16,
-    paddingVertical: 8,
+    marginBottom: 5,
     paddingHorizontal: 12,
     backgroundColor: '#ffffff', // Botones con fondo blanco
     borderRadius: 13,
@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+    height:35,
   },
   categoryText: {
     color: '#333',

@@ -23,13 +23,13 @@ export const LoginScreen = () => {
 
     useEffect(() => {
         if (!errorMessage) return;
-    
+
         Alert.alert('Login incorrecto', errorMessage, [{
             text: 'Ok',
             onPress: removeError
         }]);
     }, [errorMessage, removeError]);
-    
+
     useEffect(() => {
         if (status === 'authenticated') {
             // Redirigir a la pantalla principal
@@ -62,9 +62,10 @@ export const LoginScreen = () => {
         <KeyboardAwareScrollView style={{ flex: 1 }}>
 
             <Background>
-                <Logo />
-                <Text style={loginStyle.quote}>La excelencia en el servicio es el ingrendiente secreto que sazona la experiencia</Text>
-
+                <View style={loginStyle.logoAndQuoteContainer}>
+                    <Logo />
+                    <Text style={loginStyle.quote}>La excelencia en el servicio es el ingrediente secreto que sazona la experiencia</Text>
+                </View>
                 <View style={loginStyle.loginInputsContainer}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Ionicons name="mail" size={20} color="#ffff" style={{ margin: 10 }} />

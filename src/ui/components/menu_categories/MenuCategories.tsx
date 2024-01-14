@@ -3,20 +3,23 @@ import {ScrollView, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {styles} from './MenuCategoriesStyle';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const categories = ['Entrantes', 'Ensaladas', 'Carnes', 'Pescados'];
+
 
 interface MenuCategoriesProps {
   categories: string[];
   selected: string;
+  onSelectCategory: (category: string) => void;
+
 }
 export const MenuCategories: React.FC<MenuCategoriesProps> = ({
   categories,
   selected,
+  onSelectCategory,
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState('Entrantes');
+/*   const [selectedCategory, setSelectedCategory] = useState('Entrantes');
   const handleSelectCategory = (category: string) => {
-    setSelectedCategory(category);
-  };
+    onSelectCategory(category);
+  }; */
   return (
     <ScrollView
       horizontal
@@ -27,13 +30,13 @@ export const MenuCategories: React.FC<MenuCategoriesProps> = ({
           key={category}
           style={[
             styles.categoryButton,
-            selectedCategory === category ? styles.selectedButton : null,
+            selected === category ? styles.selectedButton : null,
           ]}
-          onPress={() => handleSelectCategory(category)}>
+          onPress={() => onSelectCategory(category)}>
           <Text
             style={[
               styles.categoryText,
-              selectedCategory === category ? styles.selectedText : null,
+              selected === category ? styles.selectedText : null,
             ]}>
             {category}
           </Text>

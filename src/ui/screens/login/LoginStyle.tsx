@@ -2,7 +2,15 @@ import { Dimensions, Platform, StyleSheet } from "react-native";
 
 
 export const loginStyle = StyleSheet.create({
-    
+
+
+    logoAndQuoteContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: '40%', // Ajusta según necesites para bajar el logo y el quote
+      },
+
     quote: {
 
         color: 'white',
@@ -12,62 +20,57 @@ export const loginStyle = StyleSheet.create({
         textAlign: 'center'
     },
 
-    inputField: {
+    loginInputsContainer: {
+        alignItems: 'center', // Centra los hijos horizontalmente
+        justifyContent: 'center', // Centra los hijos verticalmente
+        flex: 1, // Ocupa todo el espacio disponible
+    },
 
-        height: 40,
-        color:'black',
-        width: '90%',
-        borderColor:'transparent',
-        borderBottomColor:'#ADB5BD',
-        borderWidth: 1,
-        marginBottom: 10,
-        marginRight:20,
-        paddingHorizontal: 10,
 
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
 
     },
-    
-    inputContainer:  {
-        flexDirection: 'row', 
-        alignItems: 'center',
-        
+
+    inputField: {
+        height: 40,
+        color: 'black',
+        width: '75%',
+        borderColor: 'transparent',
+        borderBottomColor: '#ADB5BD',
+        borderWidth: 1,
+        marginBottom: 10,
+        paddingHorizontal: 10,
     },
 
     inputFieldIOS: {
-        // Estilo específico para dispositivos iOS
-        borderWidth: 0,
-        borderBottomColor: '#ADB5BD',
         borderBottomWidth: 1,
-        
+        borderBottomColor: '#ADB5BD',
         marginBottom: 10,
         paddingHorizontal: 10,
-        marginRight:10,
-        ...(Platform.OS === 'ios' && { width: Dimensions.get('window').width - 150 }),
+        width: '75%',
+    },
 
-      },
 
-      button:{
+    button: {
         height: 47,
-        width: 290,
+        width: 330,
         backgroundColor: '#525F7F',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
-        marginBottom:20,
+        marginBottom: 20,
     },
 
     buttonText: {
-        fontSize:18,
-        color:'white',
-        fontWeight:'bold',
+        fontSize: 18,
+        color: 'white',
+        fontWeight: 'bold',
 
-    }, 
+    },
 
-    loginInputsContainer: {
 
-       
-
-    }
 
 
 
