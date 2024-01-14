@@ -10,8 +10,9 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
       color:'white',
       padding: 10,
-      backgroundColor: '#525F7F',
-  },
+      backgroundColor: '#107b7e',
+/*       backgroundColor: '#525F7F',
+ */  },
 
   });
   
