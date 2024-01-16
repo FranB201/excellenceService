@@ -7,6 +7,8 @@ import { DrinksMenuScreen } from '../screens/drink_menu/DrinksMenuScreen';
 import { ChecklistScreen } from '../screens/checklist/ChecklistScreen';
 import { LessonsScreen } from '../screens/lessons/LessonsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { MenuTypeScreen } from '../screens/Restaurant/menu_type/MenuType';
+import FoodStack from './FoodStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -57,7 +59,7 @@ const MyTabs = () => (
         header: () => <CustomHeader />,
         headerShown: true
       }} 
-      component={FoodMenuScreen} 
+      component={FoodStack} 
     />
 
     <Tab.Screen 
