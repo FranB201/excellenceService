@@ -15,14 +15,15 @@ export const styles = StyleSheet.create({
     },
     headerTitle: {
       fontWeight: 'bold',
-      fontSize: 14,
-      marginTop:35,
-      marginLeft:20,
-      color: '#262a2e'
+      fontSize: 22,
+      marginTop: 35,
+      marginLeft: 10,
+      color: 'white'
       // Otros estilos para el título
     },
     menuIcon: {
-        marginLeft: 10, // Espacio desde el lado izquierdo
+        marginLeft: 20,
+        marginTop:35, // Espacio desde el lado izquierdo
         fontSize: 30, // Tamaño del icono del menú
         color:'#282c30'
         // Agrega más estilos para el icono aquí
