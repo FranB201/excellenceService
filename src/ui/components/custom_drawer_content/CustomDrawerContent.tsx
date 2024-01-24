@@ -1,21 +1,20 @@
 import React from 'react';
 import {View, Image, Text} from 'react-native';
+import { Navigator } from '../../navigation/Navigator';
 import {
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerItem,
+  DrawerItem, 
+  // Cambio aquí: Usar DrawerContentProps
 } from '@react-navigation/drawer';
 
-interface DrawerContentComponentProps {
-    title: string;
-  }
-export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = (props) => {
 
+export const CustomDrawerContent: React.FC<any> = props => {
   return (
     <DrawerContentScrollView {...props}>
       <View style={{padding: 20, backgroundColor: '#fff'}}>
         <Image
-          source={{uri: 'url_de_tu_imagen'}}
+          source={require('../../assets/login/avatar.png')}
           style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
         />
         <Text style={{fontWeight: 'bold'}}>Catherine Marin</Text>
@@ -23,11 +22,16 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = (props
         <Text>Excelencia: ★★★★☆</Text>
       </View>
 
-      {/* Agrega el resto de tus items de drawer aquí */}
+      <DrawerItem
+        label="Pedidos"
+        onPress={() => props.navigation.navigate('Orders')}// Navega a la pantalla de pedidos
+      />
 
-     {/*  <DrawerItemList {...props} /> */}
+      <DrawerItem
+        label="Horarios"
+        onPress={() => props.navigation.navigate('Schedules')} // Navega a la pantalla de horarios
+      />
 
-      {/* Puedes agregar items personalizados o componentes aquí */}
       <DrawerItem
         label="Logout"
         onPress={() => {
@@ -36,4 +40,4 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = (props
       />
     </DrawerContentScrollView>
   );
-}
+};

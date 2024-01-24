@@ -18,7 +18,7 @@ interface Item {
   
 
 export const MenuTypeScreen: React.FC = () => {
-    const categories = ['Entrantes', 'Ensaladas', 'Carnes', 'Pescados', 'Paellas',];
+
     const navigation = useNavigation();
     const handleCardPress = (item: Item) => {
         // Aquí puedes pasar parámetros adicionales si es necesario
@@ -26,7 +26,7 @@ export const MenuTypeScreen: React.FC = () => {
       };
       const renderItem: ListRenderItem<Item> = ({ item }) => (
         <TouchableOpacity onPress={() => handleCardPress(item)}>
-          <Card title={item.title} image={item.image} rating={item.rating} />
+          <Card title={item.title} image={item.image} rating={item.rating} fullWidth={true}/>
         </TouchableOpacity>
       );
       
@@ -36,7 +36,7 @@ export const MenuTypeScreen: React.FC = () => {
           data={data}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
-          numColumns={2}
+          //numColumns={2}
         />
       </View>
     );

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, ProgressBarAndroid, Button, ScrollView, Dimensions } from 'react-native';
-import Accordion from 'react-native-collapsible/Accordion';
 import { styles } from './LessonsStyle'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 

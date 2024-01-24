@@ -5,16 +5,16 @@ import { styles } from './CardBaseStyle';
 interface CardProps {
   title: string;
   image: string;
-  rating: string; // or number, depending on how you want to handle the rating
+  rating: string; 
+  fullWidth: boolean;
 }
 
-export const Card: React.FC<CardProps> = ({ title, image, rating }) => (
-  <View style={[styles.card, { width: '40%' }]}>
+export const Card: React.FC<CardProps> = ({ title, image, rating,fullWidth }) => (
+  <View style={fullWidth ? styles.fullWidthCard : styles.card}>
     <Image 
       source={typeof image === 'string' ? { uri: image } : image}
       style={styles.cardImage}
     />
-    <Text style={styles.cardTitle}>{title}</Text>
-    {/* Agregar más detalles como el rating */}
+    <Text style={[styles.cardTitle, fullWidth && styles.cardTitleFullWidth]}>{title}</Text>
   </View>
 );
