@@ -10,9 +10,9 @@ interface Item {
     category: string;
   }
   const data: Item[] = [
-    { title: 'Comida', image: require('../../../assets/foodImgs/bravas.jpg'), rating: '4.8', category: 'Entrantes' },
-    { title: 'Bebidas', image: require('../../../assets/foodImgs/tortilla.jpeg'), rating: '4.7', category: 'Entrantes' },
-    { title: 'Postres', image: require('../../../assets/foodImgs/tortilla.jpeg'), rating: '4.7', category: 'Entrantes' },
+    { title: 'Comida', image: require('../../../assets/foodImgs/Merluza.jpeg'), rating: '4.8', category: 'Entrantes' },
+    { title: 'Bebidas', image: require('../../../assets/foodImgs/bebidas.jpeg'), rating: '4.7', category: 'Entrantes' },
+    { title: 'Postres', image: require('../../../assets/foodImgs/postres.jpg'), rating: '4.7', category: 'Entrantes' },
   ];
 
   

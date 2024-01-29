@@ -44,6 +44,7 @@ const data: Item[] = [
 
 ];
 const renderItem: ListRenderItem<Item> = ({ item }) => (
+  
   <Card title={item.title} image={item.image} rating={item.rating} fullWidth={false}/>
 );
 

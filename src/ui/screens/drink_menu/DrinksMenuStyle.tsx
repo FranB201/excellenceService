@@ -6,5 +6,10 @@ export const styles = StyleSheet.create({
       // Estilos adicionales si son necesarios
     },
 
+    cardContainer: {
+      flex: 1,
+      // Estilos para el contenedor de cada tarjeta
+    },
+
   });
   

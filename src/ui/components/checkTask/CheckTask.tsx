@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { styles } from './CheckTaskStyle';
 import { IncidencePopUp } from '../pop_ups/incidencePopUp/IncidencePopUp';
@@ -12,6 +12,8 @@ interface CheckTaskProps {
 export const CheckTask: React.FC<CheckTaskProps> = ({ description }) => {
     const [status, setStatus] = useState({ blue: false, green: false, red: false });
     const [isPopupVisible, setPopupVisible] = useState(false);
+/*     const cameraRef = useRef<RNCamera>(null);
+ */
 
     const handleCheck = (color: 'blue' | 'green' | 'red') => {
         setStatus({ ...status, [color]: true });
@@ -20,8 +22,18 @@ export const CheckTask: React.FC<CheckTaskProps> = ({ description }) => {
         }
     };
 
-    const handleTakePhoto = () => {
-        // Lógica para abrir la cámara
+    const handleTakePhoto = async () => {
+/*         if (cameraRef.current) {
+            try {
+                const options = { quality: 0.5, base64: true };
+                const data = await cameraRef.current.takePictureAsync(options);
+                console.log(data.uri);
+                // Aquí puedes manejar la foto como necesites
+            } catch (error) {
+                console.error(error);
+                Alert.alert('Error', 'No se pudo tomar la foto.');
+            }
+        } */
     };
 
     return (
@@ -43,6 +55,12 @@ export const CheckTask: React.FC<CheckTaskProps> = ({ description }) => {
                 onClose={() => setPopupVisible(false)}
                 onTakePhoto={handleTakePhoto}
             />
+{/*             {isPopupVisible && (
+                <RNCamera
+                    ref={cameraRef}
+                // Otros parámetros de configuración para RNCamera
+                />
+            )} */}
         </View>
     );
 };
