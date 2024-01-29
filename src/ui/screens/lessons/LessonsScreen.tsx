@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, ProgressBarAndroid, Button, ScrollView, Dimensions } from 'react-native';
 import { styles } from './LessonsStyle'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 interface CardProps {
   title: string;
@@ -51,6 +52,9 @@ export const LessonsScreen: React.FC = () => {
   );
 
   const Card: React.FC<CardProps> = ({ title, subtitle, progress = 0 }) => {
+
+    const navigation = useNavigation();
+
     return (
       <View style={[styles.card, { width: windowWidth }]}>
         {/* Contenedor para el contenido central */}
@@ -61,8 +65,8 @@ export const LessonsScreen: React.FC = () => {
 
         {/* Contenedor para los botones que se mantiene en la parte inferior */}
         <View style={styles.buttonContainer}>
-          <CustomButton title="Ver información" onPress={() => {/* acción */ }} />
-          <CustomButton title="Hacer test" onPress={() => {/* acción */ }} />
+          <CustomButton title="Ver información" onPress={() => {/* acción */ }}  />
+          <CustomButton title="Hacer test" onPress={() => navigation.navigate('Test')}/>          
         </View>
       </View>
 
