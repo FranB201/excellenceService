@@ -1,120 +1,307 @@
-import React, { useState, ChangeEvent } from 'react';
-import { View, Text, TextInput, FlatList, ListRenderItem } from 'react-native';
-import { styles } from './OrdersScreenStyle'; // Tus estilos personalizados
-import Ionicons from 'react-native-vector-icons/Ionicons';
-// Definición de tipos
+import React, {useState} from 'react';
+import {View, Text, TextInput, FlatList, ListRenderItem} from 'react-native';
+import {styles} from './OrdersScreenStyle';
+import {Accordion} from '../../components/acordion/AcordionProvider';
+
 interface Articulo {
   id: string;
   nombre: string;
   tipo: 'bebida_alcoholica' | 'refresco' | 'otro';
+  categoria: string;
+}
+
+interface Categoria {
+  nombre: string;
+  articulos: Articulo[];
 }
 
 interface Proveedor {
   id: string;
   nombre: string;
-  articulos: Articulo[];
+  categorias: Categoria[];
 }
 
-// Datos de ejemplo
+// Datos de ejemplo con categorías añadidas
 const proveedores: Proveedor[] = [
-    { 
-      id: '1', 
-      nombre: 'Proveedor A', 
-      articulos: [
-        { id: 'a1', nombre: 'Vino Tinto', tipo: 'bebida_alcoholica' },
-        { id: 'a2', nombre: 'Coca Cola', tipo: 'refresco' },
-        { id: 'a3', nombre: 'Vino Blanco', tipo: 'bebida_alcoholica' },
-        { id: 'a4', nombre: 'Pepsi', tipo: 'refresco' },
-        { id: 'a5', nombre: 'Champagne', tipo: 'bebida_alcoholica' },
-        { id: 'a6', nombre: '7 Up', tipo: 'refresco' },
-        { id: 'a7', nombre: 'Cerveza Lager', tipo: 'bebida_alcoholica' },
-        { id: 'a8', nombre: 'Fanta Naranja', tipo: 'refresco' },
-        { id: 'a9', nombre: 'Cerveza Stout', tipo: 'bebida_alcoholica' },
-        { id: 'a10', nombre: 'Sprite Zero', tipo: 'refresco' }
-      ]
-    },
-    { 
-      id: '2', 
-      nombre: 'Proveedor B', 
-      articulos: [
-        { id: 'b1', nombre: 'Whisky Escocés', tipo: 'bebida_alcoholica' },
-        { id: 'b2', nombre: 'Mountain Dew', tipo: 'refresco' },
-        { id: 'b3', nombre: 'Ginebra', tipo: 'bebida_alcoholica' },
-        { id: 'b4', nombre: 'Dr Pepper', tipo: 'refresco' },
-        { id: 'b5', nombre: 'Ron Caribeño', tipo: 'bebida_alcoholica' },
-        { id: 'b6', nombre: 'Tonic Water', tipo: 'refresco' },
-        { id: 'b7', nombre: 'Vodka Ruso', tipo: 'bebida_alcoholica' },
-        { id: 'b8', nombre: 'Red Bull', tipo: 'refresco' },
-        { id: 'b9', nombre: 'Tequila', tipo: 'bebida_alcoholica' },
-        { id: 'b10', nombre: 'Monster Energy', tipo: 'refresco' }
-      ]
-    },
-    { 
-      id: '3', 
-      nombre: 'Proveedor C', 
-      articulos: [
-        { id: 'c1', nombre: 'Sake Japonés', tipo: 'bebida_alcoholica' },
-        { id: 'c2', nombre: 'Agua Mineral', tipo: 'refresco' },
-        { id: 'c3', nombre: 'Cava Español', tipo: 'bebida_alcoholica' },
-        { id: 'c4', nombre: 'Limonada', tipo: 'refresco' },
-        { id: 'c5', nombre: 'Brandy', tipo: 'bebida_alcoholica' },
-        { id: 'c6', nombre: 'Iced Tea', tipo: 'refresco' },
-        { id: 'c7', nombre: 'Mezcal', tipo: 'bebida_alcoholica' },
-        { id: 'c8', nombre: 'Ginger Ale', tipo: 'refresco' },
-        { id: 'c9', nombre: 'Cóctel Mojito', tipo: 'bebida_alcoholica' },
-        { id: 'c10', nombre: 'Gatorade', tipo: 'refresco' }
-      ]
-    },
-    // Puedes seguir agregando más proveedores y artículos si es necesario
-  ];
-  
+  {
+    id: '1',
+    nombre: 'Proveedor A',
+    categorias: [
+      {
+        nombre: 'Bebidas Alcohólicas',
+        articulos: [
+          {
+            id: 'a1',
+            nombre: 'Vino Tinto',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Vinos',
+          },
+          {
+            id: 'a3',
+            nombre: 'Vino Blanco',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Vinos',
+          },
+          {
+            id: 'a5',
+            nombre: 'Champagne',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Espumosos',
+          },
+          {
+            id: 'a7',
+            nombre: 'Cerveza Lager',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Cervezas',
+          },
+          {
+            id: 'a9',
+            nombre: 'Cerveza Stout',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Cervezas',
+          },
+        ],
+      },
+      {
+        nombre: 'Refrescos',
+        articulos: [
+          {id: 'a2', nombre: 'Coca Cola', tipo: 'refresco', categoria: 'Colas'},
+          {id: 'a4', nombre: 'Pepsi', tipo: 'refresco', categoria: 'Colas'},
+          {id: 'a6', nombre: '7 Up', tipo: 'refresco', categoria: 'Limonadas'},
+          {
+            id: 'a8',
+            nombre: 'Fanta Naranja',
+            tipo: 'refresco',
+            categoria: 'Naranjadas',
+          },
+          {
+            id: 'a10',
+            nombre: 'Sprite Zero',
+            tipo: 'refresco',
+            categoria: 'Limonadas',
+          },
+        ],
+      },
+      // Más categorías si son necesarias...
+    ],
+  },
+  {
+    id: '2',
+    nombre: 'Proveedor B',
+    categorias: [
+      {
+        nombre: 'Destilados',
+        articulos: [
+          {
+            id: 'b1',
+            nombre: 'Whisky Escocés',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Whiskys',
+          },
+          {
+            id: 'b3',
+            nombre: 'Ginebra',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Ginebras',
+          },
+          {
+            id: 'b5',
+            nombre: 'Ron Caribeño',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Rones',
+          },
+          {
+            id: 'b7',
+            nombre: 'Vodka Ruso',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Vodkas',
+          },
+          {
+            id: 'b9',
+            nombre: 'Tequila',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Tequilas',
+          },
+        ],
+      },
+      {
+        nombre: 'Energizantes y Aguas',
+        articulos: [
+          {
+            id: 'b2',
+            nombre: 'Mountain Dew',
+            tipo: 'refresco',
+            categoria: 'Energizantes',
+          },
+          {id: 'b4', nombre: 'Dr Pepper', tipo: 'refresco', categoria: 'Sodas'},
+          {
+            id: 'b6',
+            nombre: 'Tonic Water',
+            tipo: 'refresco',
+            categoria: 'Aguas Tónicas',
+          },
+          {
+            id: 'b8',
+            nombre: 'Red Bull',
+            tipo: 'refresco',
+            categoria: 'Energizantes',
+          },
+          {
+            id: 'b10',
+            nombre: 'Monster Energy',
+            tipo: 'refresco',
+            categoria: 'Energizantes',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: '3',
+    nombre: 'Proveedor C',
+    categorias: [
+      {
+        nombre: 'Importados',
+        articulos: [
+          {
+            id: 'c1',
+            nombre: 'Sake Japonés',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Sakes',
+          },
+          {
+            id: 'c3',
+            nombre: 'Cava Español',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Cavas',
+          },
+          {
+            id: 'c5',
+            nombre: 'Brandy',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Brandys',
+          },
+          {
+            id: 'c7',
+            nombre: 'Mezcal',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Mezcales',
+          },
+          {
+            id: 'c9',
+            nombre: 'Cóctel Mojito',
+            tipo: 'bebida_alcoholica',
+            categoria: 'Cócteles',
+          },
+        ],
+      },
+      {
+        nombre: 'Sin Alcohol',
+        articulos: [
+          {
+            id: 'c2',
+            nombre: 'Agua Mineral',
+            tipo: 'refresco',
+            categoria: 'Aguas',
+          },
+          {
+            id: 'c4',
+            nombre: 'Limonada',
+            tipo: 'refresco',
+            categoria: 'Limonadas',
+          },
+          {
+            id: 'c6',
+            nombre: 'Iced Tea',
+            tipo: 'refresco',
+            categoria: 'Tés Helados',
+          },
+          {
+            id: 'c8',
+            nombre: 'Ginger Ale',
+            tipo: 'refresco',
+            categoria: 'Gaseosas',
+          },
+          {
+            id: 'c10',
+            nombre: 'Gatorade',
+            tipo: 'refresco',
+            categoria: 'Bebidas Deportivas',
+          },
+        ],
+      },
+    ],
+  },
 
-// Componente de búsqueda
-export const OrdersScreen: React.FC = () => {
-    const [textoBusqueda, setTextoBusqueda] = useState<string>('');
-    const [resultadosBusqueda, setResultadosBusqueda] = useState<Proveedor[]>(proveedores);
-  (proveedores);
+  // Más proveedores si son necesarios...
+];
 
-   const buscarArticulo = (texto: string) => {
+const OrdersScreen: React.FC = () => {
+  const [textoBusqueda, setTextoBusqueda] = useState<string>('');
+  const [resultadosBusqueda, setResultadosBusqueda] =
+    useState<Proveedor[]>(proveedores);
+
+  const buscarArticulo = (texto: string) => {
     setTextoBusqueda(texto);
     if (texto === '') {
       setResultadosBusqueda(proveedores);
-      return;
+    } else {
+      const filtrados = proveedores
+        .map(proveedor => {
+          const categoriasFiltradas = proveedor.categorias
+            .map(categoria => {
+              const articulosFiltrados = categoria.articulos.filter(articulo =>
+                articulo.nombre.toLowerCase().includes(texto.toLowerCase()),
+              );
+              return {...categoria, articulos: articulosFiltrados};
+            })
+            .filter(categoria => categoria.articulos.length > 0);
+
+          return {...proveedor, categorias: categoriasFiltradas};
+        })
+        .filter(proveedor => proveedor.categorias.length > 0);
+
+      setResultadosBusqueda(filtrados);
     }
-    const filtrados = proveedores.map(proveedor => ({
-      ...proveedor,
-      articulos: proveedor.articulos.filter(articulo => articulo.nombre.toLowerCase().includes(texto.toLowerCase())),
-    })).filter(proveedor => proveedor.articulos.length > 0);
-    setResultadosBusqueda(filtrados);
   };
 
-  const renderProveedor: ListRenderItem<Proveedor> = ({ item }) => (
+  const renderCategoria: ListRenderItem<Categoria> = ({item}) => (
+    <Accordion title={item.nombre}>
+      {item.articulos.map(articulo => (
+        <Text key={articulo.id} style={styles.articuloNombre}>
+          {articulo.nombre}
+        </Text>
+      ))}
+    </Accordion>
+  );
+
+  const renderProveedor: ListRenderItem<Proveedor> = ({item}) => (
     <View style={styles.proveedorContainer}>
       <Text style={styles.proveedorNombre}>{item.nombre}</Text>
-      {item.articulos.map(articulo => (
-        <Text key={articulo.id} style={styles.articuloNombre}>{articulo.nombre}</Text>
-      ))}
+      <FlatList
+        data={item.categorias}
+        keyExtractor={item => item.nombre}
+        renderItem={renderCategoria}
+      />
     </View>
   );
 
   return (
     <View style={styles.container}>
-    <View style={styles.header}>
-
-
-      <TextInput 
-        style={styles.inputText}
-        placeholder="Buscar Artículo..."
-        value={textoBusqueda}
-        onChangeText={buscarArticulo}
-      />
-    </View>
-    <FlatList
+      <View style={styles.header}>
+        <TextInput
+          style={styles.inputText}
+          placeholder="Buscar Artículo..."
+          value={textoBusqueda}
+          onChangeText={buscarArticulo}
+        />
+      </View>
+      <FlatList
         data={resultadosBusqueda}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         renderItem={renderProveedor}
       />
-  </View>
+    </View>
   );
 };
 

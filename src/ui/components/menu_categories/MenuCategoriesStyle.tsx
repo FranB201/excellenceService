@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-    height:35,
+    height: 35,
   },
   categoryText: {
     color: '#333',
@@ -39,6 +39,9 @@ export const styles = StyleSheet.create({
   },
   selectedText: {
     // Estilos para el botón seleccionado
+    color: '#fff',
+  },
+  categoriaNombre: {
     color: '#fff',
   },
 });

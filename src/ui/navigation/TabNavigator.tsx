@@ -1,13 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from '../screens/home/HomeScreen';
-import { FoodMenuScreen } from '../screens/food_menu/FoodMenuScreen';
 import { CustomHeader } from '../components/custom_header/CustomHeader';
 import { DrinksMenuScreen } from '../screens/drink_menu/DrinksMenuScreen';
 import { ChecklistScreen } from '../screens/checklist/ChecklistScreen';
 import { LessonsScreen } from '../screens/lessons/LessonsScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { MenuTypeScreen } from '../screens/Restaurant/menu_type/MenuType';
 import FoodStack from './FoodStack';
 
 const Tab = createBottomTabNavigator();
@@ -17,8 +15,8 @@ const MyTabs = () => (
     <Tab.Screen 
       name="Formación" 
       options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="school" size={size} color="#525F7F" />
+        tabBarIcon: () => (
+          <Ionicons name="school" color="#525F7F" />
         ),
         header: () => <CustomHeader />,
         headerShown: true
@@ -29,8 +27,8 @@ const MyTabs = () => (
     <Tab.Screen 
       name="Checklist"
       options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="checkbox" size={size} color="#525F7F" />
+        tabBarIcon: () => (
+          <Ionicons name="checkbox" color="#525F7F" />
         ),
         header: () => <CustomHeader />,
         headerShown: true
@@ -41,8 +39,8 @@ const MyTabs = () => (
     <Tab.Screen 
       name="Home" 
       options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="home" size={size} color="#525F7F" />
+        tabBarIcon: () => (
+          <Ionicons name="home"  color="#525F7F" />
         ),
         header: () => <CustomHeader />,
         headerShown: true
@@ -53,8 +51,8 @@ const MyTabs = () => (
     <Tab.Screen 
       name="Food" 
       options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="restaurant" size={size} color="#525F7F" />
+        tabBarIcon: () => (
+          <Ionicons name="restaurant" color="#525F7F" />
         ),
         header: () => <CustomHeader />,
         headerShown: true
@@ -65,8 +63,8 @@ const MyTabs = () => (
     <Tab.Screen 
       name="Drinks" 
       options={{
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons name="beer" size={size} color="#525F7F" />
+        tabBarIcon: () => (
+          <Ionicons name="beer" color="#525F7F" />
         ),
         header: () => <CustomHeader />,
         headerShown: true

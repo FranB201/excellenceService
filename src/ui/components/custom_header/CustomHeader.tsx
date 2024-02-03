@@ -15,7 +15,7 @@ export const CustomHeader = () => {
 
         {/* Resto de tu encabezado personalizado */}
         <LinearGradient  style={styles.headerContainer}
-            colors={['#f2f4f5', '#c5d2de', '#a5bcd1','#89a9c7','#718da8','#4c647a']}
+            colors={['#cee9d6', '#cee9d6', '#cee9d6','#cee9d6','#cee9d6','#cee9d6']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}>
         <TouchableOpacity onPress={openDrawer}>
