@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 10
+    marginBottom: 10,
+    backgroundColor: '#f6fff5'
   },
   contentContainer: {
     flex: 1,
@@ -22,6 +23,7 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 20,
+    color: '#000000b6'
   },
   cardSubtitle: {
     fontSize: 24,
@@ -35,7 +37,7 @@ export const styles = StyleSheet.create({
   },
   buttonStyle: {
     alignItems: 'center',
-    backgroundColor: '#5468ff',
+    backgroundColor: '#567568',
     borderColor: 'transparent',
     borderRadius: 6,
     borderWidth: 0,
@@ -52,7 +54,8 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff',
-    fontFamily: 'JetBrains Mono',
+    fontFamily: 'Montserrat',
     fontSize: 18,
+    fontWeight:'bold'
   },
 });

@@ -40,7 +40,7 @@ export const TestScreen: React.FC = () => {
     const handleAnswer = (selectedOption: string, isCorrect: boolean) => {
         const correctAnswer = questions[currentQuestionIndex].answer;
         setFeedbackMessage(isCorrect ? "Correcto!!!" : `Incorrecto, Respuesta correcta: ${correctAnswer}`);
-        setFeedbackColor(isCorrect ? 'green' : 'red');
+        setFeedbackColor(isCorrect ? '#2D6A4F' : '#9B2C2C');
         setFeedbackVisible(true);
 
         // Animar el banner de retroalimentación

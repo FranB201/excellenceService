@@ -7,7 +7,9 @@ const Stack = createStackNavigator();
 
 const FoodStack: React.FC = () => (
   <Stack.Navigator>
-    <Stack.Screen name="MenuType" component={MenuTypeScreen} />
+    <Stack.Screen options={{
+      headerShown: false
+    }} name="MenuType" component={MenuTypeScreen} />
     <Stack.Screen name="FoodMenu" component={FoodMenuScreen} />
   </Stack.Navigator>
 );

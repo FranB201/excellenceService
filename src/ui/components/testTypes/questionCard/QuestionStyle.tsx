@@ -26,13 +26,14 @@ export const styles = StyleSheet.create({
       },
       verifyButton: {
         marginTop: 20,
-        backgroundColor: 'blue', // Ajusta a tu preferencia
+        backgroundColor: '#567568', // Ajusta a tu preferencia
         padding: 15,
         borderRadius: 15,
         alignItems: 'center',
       },
       verifyButtonText: {
         color: 'white', // Ajusta a tu preferencia
+        fontWeight:'bold',
         fontSize: 18,
       },
   });

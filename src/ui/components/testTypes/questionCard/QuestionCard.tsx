@@ -33,7 +33,7 @@ export const QuestionCard: React.FC<QuestionProps> = ({ questionText, options, o
                     key={index}
                     style={[
                         styles.optionButton,
-                        selectedOption === option ? { backgroundColor: isVerified ? (option === answer ? 'green' : 'red') : 'lightgreen' } : {},
+                        selectedOption === option ? { backgroundColor: isVerified ? (option === answer ? '#2D6A4F' : '#9B2C2C') : 'lightgreen' } : {},
                     ]}
                     onPress={() => handleOptionPress(option)}
                 >
@@ -41,7 +41,7 @@ export const QuestionCard: React.FC<QuestionProps> = ({ questionText, options, o
                 </TouchableOpacity>
             ))}
             <TouchableOpacity style={styles.verifyButton} onPress={handleVerifyPress}>
-                <Text>Comprobar</Text>
+                <Text style={styles.verifyButtonText}>Comprobar</Text>
             </TouchableOpacity>
         </View>
     );

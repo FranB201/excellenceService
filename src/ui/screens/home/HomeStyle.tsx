@@ -5,7 +5,8 @@ export const HomeStyle = StyleSheet.create({
     
     container:{
       flex: 1,
-      paddingTop:10
+      paddingTop:10,
+      backgroundColor:'#f6fff5'
     },
 
     card: {
