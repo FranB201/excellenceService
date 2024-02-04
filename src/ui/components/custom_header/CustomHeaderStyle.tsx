@@ -18,14 +18,14 @@ export const styles = StyleSheet.create({
       fontSize: 22,
       marginTop: 35,
       marginLeft: 10,
-      color: 'white'
+      color: '#567568'
       // Otros estilos para el título
     },
     menuIcon: {
         marginLeft: 20,
         marginTop:35, // Espacio desde el lado izquierdo
-        fontSize: 30, // Tamaño del icono del menú
-        color:'#282c30'
+        fontSize: 35, // Tamaño del icono del menú
+        color:'#567568'
         // Agrega más estilos para el icono aquí
       },
   });

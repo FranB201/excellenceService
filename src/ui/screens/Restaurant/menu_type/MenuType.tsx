@@ -1,6 +1,9 @@
 import { View, FlatList, ListRenderItem, TouchableOpacity } from "react-native";
 import { Card } from "../../../components/card_base/CardBase";
 import { useNavigation } from "@react-navigation/core";
+import { CardCategory } from "../../../components/cards/cardCategory/CardCategory";
+import { styles } from './MenuTypeStyle';
+
 
 
 interface Item {
@@ -10,9 +13,10 @@ interface Item {
     category: string;
   }
   const data: Item[] = [
-    { title: 'Comida', image: require('../../../assets/foodImgs/Merluza.jpeg'), rating: '4.8', category: 'Entrantes' },
-    { title: 'Bebidas', image: require('../../../assets/foodImgs/bebidas.jpeg'), rating: '4.7', category: 'Entrantes' },
-    { title: 'Postres', image: require('../../../assets/foodImgs/postres.jpg'), rating: '4.7', category: 'Entrantes' },
+    { title: '', image: require('../../../assets/categories/desayunos.png'), rating: '4.8', category: 'Entrantes' },
+    { title: '', image: require('../../../assets/categories/platos.png'), rating: '4.7', category: 'Entrantes' },
+    { title: '', image: require('../../../assets/categories/postres.png'), rating: '4.7', category: 'Entrantes' },
+    { title: '', image: require('../../../assets/categories/bebidas.png'), rating: '4.7', category: 'Entrantes' },
   ];
 
   
@@ -26,12 +30,12 @@ export const MenuTypeScreen: React.FC = () => {
       };
       const renderItem: ListRenderItem<Item> = ({ item }) => (
         <TouchableOpacity onPress={() => handleCardPress(item)}>
-          <Card title={item.title} image={item.image} rating={item.rating} fullWidth={true}/>
+          <CardCategory title={item.title} image={item.image} rating={item.rating} fullWidth={true}/>
         </TouchableOpacity>
       );
       
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList
           data={data}
           renderItem={renderItem}
