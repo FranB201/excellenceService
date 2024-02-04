@@ -58,69 +58,56 @@ export const LoginScreen = () => {
 
     return (
 
+        <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#b5d4cc' }}>
 
-        <KeyboardAwareScrollView style={{ flex: 1 }}>
+            <View style={loginStyle.container}>
+                <Logo />
 
-            <Background>
-                <View style={loginStyle.logoAndQuoteContainer}>
-                    <Logo />
-                    <Text style={loginStyle.quote}>La excelencia en el servicio es el ingrediente secreto que sazona la experiencia</Text>
-                </View>
                 <View style={loginStyle.loginInputsContainer}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Ionicons name="mail" size={20} color="#ffff" style={{ margin: 10 }} />
+                    <Text style={loginStyle.quote}>
+                        La excelencia en el servicio es el ingrediente secreto que sazona la experiencia
+                    </Text>
+                    {/* Campo de Email */}
+                    <View style={loginStyle.inputContainer}>
+                        <Ionicons name="mail" size={20} color="rgba(0, 0, 0, 0.7)" style={loginStyle.icon} />
                         <TextInput
                             placeholder="Email"
                             keyboardType="email-address"
-                            style={[loginStyle.inputField, Platform.OS === 'ios' && loginStyle.inputFieldIOS,
-                            { color: 'white' }]}
-                            placeholderTextColor='white'
-                            selectionColor="white"
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            onChangeText={(value) => {
-                                onChange(value, 'email');
-                                setForgotEmail(value);
-                            }}
-
+                            style={loginStyle.inputField}
+                            placeholderTextColor="rgba(0, 0, 0, 0.7)"
+                            onChangeText={(value) => onChange(value, 'email')}
                             value={email}
-                            onSubmitEditing={onLogin}
-                        ></TextInput>
+                        />
                     </View>
 
+                    {/* Campo de Contraseña */}
                     <View style={loginStyle.inputContainer}>
-                        <Ionicons name="lock-closed" size={20} color="#ffff" style={{ margin: 10 }} />
+                        <Ionicons name="lock-closed" size={20} color="rgba(0, 0, 0, 0.7)" style={loginStyle.icon} />
                         <TextInput
-                            placeholder="contraseña"
-                            keyboardType="email-address"
-                            style={[loginStyle.inputField, Platform.OS === 'ios' && loginStyle.inputFieldIOS,
-                            { color: 'white' }]}
-                            placeholderTextColor='white'
-                            selectionColor="white"
-                            autoCapitalize="none"
-                            autoCorrect={false}
+                            placeholder="Contraseña"
+                            secureTextEntry
+                            style={loginStyle.inputField}
+                            placeholderTextColor="rgba(0, 0, 0, 0.7)"
                             onChangeText={(value) => onChange(value, 'password')}
                             value={password}
-                            onSubmitEditing={onLogin}
-                            secureTextEntry
-                        ></TextInput>
-
+                        />
                     </View>
+                    <View style={loginStyle.forgotPassword}>
+                    <TouchableOpacity activeOpacity={0.8}>
+                        <Text style={loginStyle.buttonForget}>¿Olvidaste tu contraseña?</Text>
+                    </TouchableOpacity>
+                </View>
 
+                    {/* Botón de Login */}
                     <TouchableOpacity
                         activeOpacity={0.8}
                         style={loginStyle.button}
-                        onPress={onLogin}>
+                        onPress={onLogin}
+                    >
                         <Text style={loginStyle.buttonText}>Log in</Text>
                     </TouchableOpacity>
-
                 </View>
-            </Background>
-
+            </View>
         </KeyboardAwareScrollView>
     );
-
-}
-
-
-
+};
