@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, FlatList, ListRenderItem} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  FlatList,
+  ListRenderItem,
+  TouchableOpacity,
+} from 'react-native';
 import {styles} from './OrdersScreenStyle';
 import {Accordion} from '../../components/acordion/AcordionProvider';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface Articulo {
   id: string;
@@ -268,21 +276,33 @@ const OrdersScreen: React.FC = () => {
   const renderCategoria: ListRenderItem<Categoria> = ({item}) => (
     <Accordion title={item.nombre}>
       {item.articulos.map(articulo => (
-        <Text key={articulo.id} style={styles.articuloNombre}>
-          {articulo.nombre}
-        </Text>
+        <View key={articulo.id} style={styles.row}>
+          <Text style={styles.articuloNombre}>{articulo.nombre}</Text>
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity style={styles.button}>
+              <Ionicons name="add-circle-outline" size={20} color="green" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+              <Ionicons name="remove-circle-outline" size={20} color="green" />
+            </TouchableOpacity>
+          </View>
+        </View>
       ))}
     </Accordion>
   );
 
   const renderProveedor: ListRenderItem<Proveedor> = ({item}) => (
     <View style={styles.proveedorContainer}>
-      <Text style={styles.proveedorNombre}>{item.nombre}</Text>
-      <FlatList
-        data={item.categorias}
-        keyExtractor={item => item.nombre}
-        renderItem={renderCategoria}
-      />
+      <Accordion
+        title={item.nombre}
+        titleStyle={styles.proveedorNombre}
+        headerStyle={styles.proveedorContainer}>
+        <FlatList
+          data={item.categorias}
+          keyExtractor={item => item.nombre}
+          renderItem={renderCategoria}
+        />
+      </Accordion>
     </View>
   );
 

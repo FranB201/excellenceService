@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   },
   articuloNombre: {
     fontSize: 16,
-    color: '#567568', // Color oscuro para el texto del artículo
+    color: '#567568',
     borderBottomWidth: 1,
     borderBottomColor: '#daebe8', // Línea de separación suave
     paddingTop: 5,

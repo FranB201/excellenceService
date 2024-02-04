@@ -27,29 +27,34 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     backgroundColor: '#f7fff6',
+    borderColor: '#dae0da',
+    marginBottom: 8,
   },
   list: {
     flex: 1, // Asegurarse de que la lista ocupe todo el espacio disponible
   },
   proveedorContainer: {
-    marginVertical: 10,
-    padding: 10,
+    marginVertical: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingTop: 2,
     backgroundColor: '#b5d4cc',
     borderRadius: 5,
   },
   proveedorNombre: {
     fontWeight: 'bold',
     fontSize: 18,
-    marginBottom: 5,
     color: '#000000b3',
   },
   articuloNombre: {
     fontSize: 16,
-    color: '#567568', // Color oscuro para el texto del artículo
+    color: '#567568',
     borderBottomWidth: 1,
-    borderBottomColor: '#daebe8', // Línea de separación suave
+    borderBottomColor: '#daebe8',
     paddingTop: 5,
     paddingBottom: 5,
+    flex: 1,
   },
 
   headerStyle: {
@@ -73,5 +78,22 @@ export const styles = StyleSheet.create({
   contentStyle: {
     padding: 10,
     backgroundColor: '#ffffff', // Fondo blanco para el contenido expandido
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 5,
+    backgroundColor: '567568',
+  },
+  checkboxContainer: {
+    padding: 2,
+  },
+  buttonsContainer: {
+    flexDirection: 'row', // Alinea los botones horizontalmente
+  },
+  button: {
+    marginLeft: 10, // Añade espacio entre los botones
+    // Estilos adicionales para el botón si es necesario
   },
 });
