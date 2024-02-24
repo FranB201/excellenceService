@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useState} from 'react';
 import {
@@ -13,6 +14,8 @@ import {Accordion} from '../../components/acordion/AcordionProvider';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {globalStyles} from '../../styles/GlobalStyles';
 import CategoriaItem from './components/categoryItem/CategoryItem';
+import {CustomModal} from '../../components/pop_ups/customModal/CustomModal';
+
 
 interface Articulo {
   id: string;
@@ -246,7 +249,15 @@ const proveedores: Proveedor[] = [
   // Más proveedores si son necesarios...
 ];
 
+
 const OrdersScreen: React.FC = () => {
+  const [isVisible, setInvisible] = React.useState(false);
+const handleCloseModal = () => {
+  setInvisible(false);
+};
+const handleOpenModal = () => {
+  setInvisible(true);
+};
   const [textoBusqueda, setTextoBusqueda] = useState<string>('');
   const [resultadosBusqueda, setResultadosBusqueda] =
     useState<Proveedor[]>(proveedores);
@@ -280,7 +291,8 @@ const OrdersScreen: React.FC = () => {
       <Accordion
         title={item.nombre}
         titleStyle={styles.proveedorNombre}
-        headerStyle={styles.proveedorContainer}>
+        headerStyle={styles.proveedorContainer}
+      >
         <FlatList
           data={item.categorias}
           keyExtractor={item => item.nombre}
@@ -318,6 +330,12 @@ const OrdersScreen: React.FC = () => {
         <TouchableOpacity activeOpacity={0.8} style={globalStyles.button}>
           <Text style={globalStyles.buttonText}>Hacer pedido</Text>
         </TouchableOpacity>
+        <CustomModal isVisible={isVisible} onClose={handleCloseModal}>
+          <Text>Artículo 1</Text>
+          <Text>Artículo 2</Text>
+          <Text>Artículo 3</Text>
+          {/* Aquí puedes agregar más contenido personalizado */}
+        </CustomModal>
       </View>
     </View>
   );
