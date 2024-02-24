@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'stretch', // Cambiado de 'center' a 'stretch'
-    backgroundColor: '#f7fff6',
+    backgroundColor: '#f8f8ff',
   },
   header: {
     flexDirection: 'row',
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 5,
-    backgroundColor: '#f7fff6',
+    backgroundColor: '#f8f8ff',
     borderColor: '#dae0da',
     marginBottom: 8,
   },
@@ -91,9 +91,5 @@ export const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: 'row', // Alinea los botones horizontalmente
-  },
-  button: {
-    marginLeft: 10, // Añade espacio entre los botones
-    // Estilos adicionales para el botón si es necesario
   },
 });

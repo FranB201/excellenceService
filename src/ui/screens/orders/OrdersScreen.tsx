@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useState} from 'react';
 import {
   View,
@@ -10,6 +11,8 @@ import {
 import {styles} from './OrdersScreenStyle';
 import {Accordion} from '../../components/acordion/AcordionProvider';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {globalStyles} from '../../styles/GlobalStyles';
+import CategoriaItem from './components/categoryItem/CategoryItem';
 
 interface Articulo {
   id: string;
@@ -240,7 +243,6 @@ const proveedores: Proveedor[] = [
       },
     ],
   },
-
   // Más proveedores si son necesarios...
 ];
 
@@ -273,24 +275,6 @@ const OrdersScreen: React.FC = () => {
     }
   };
 
-  const renderCategoria: ListRenderItem<Categoria> = ({item}) => (
-    <Accordion title={item.nombre}>
-      {item.articulos.map(articulo => (
-        <View key={articulo.id} style={styles.row}>
-          <Text style={styles.articuloNombre}>{articulo.nombre}</Text>
-          <View style={styles.buttonsContainer}>
-            <TouchableOpacity style={styles.button}>
-              <Ionicons name="add-circle-outline" size={20} color="green" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Ionicons name="remove-circle-outline" size={20} color="green" />
-            </TouchableOpacity>
-          </View>
-        </View>
-      ))}
-    </Accordion>
-  );
-
   const renderProveedor: ListRenderItem<Proveedor> = ({item}) => (
     <View style={styles.proveedorContainer}>
       <Accordion
@@ -300,7 +284,15 @@ const OrdersScreen: React.FC = () => {
         <FlatList
           data={item.categorias}
           keyExtractor={item => item.nombre}
-          renderItem={renderCategoria}
+          renderItem={({item: categoria}) => (
+            <CategoriaItem
+              categoria={categoria}
+              onPedidosChange={pedidos => {
+                // Aquí deberías implementar cómo manejas los cambios en los pedidos
+                // Esto podría implicar actualizar un estado en OrdersScreen o realizar otras acciones
+              }}
+            />
+          )}
         />
       </Accordion>
     </View>
@@ -316,11 +308,17 @@ const OrdersScreen: React.FC = () => {
           onChangeText={buscarArticulo}
         />
       </View>
+
       <FlatList
         data={resultadosBusqueda}
         keyExtractor={item => item.id}
         renderItem={renderProveedor}
       />
+      <View style={globalStyles.p5}>
+        <TouchableOpacity activeOpacity={0.8} style={globalStyles.button}>
+          <Text style={globalStyles.buttonText}>Hacer pedido</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
