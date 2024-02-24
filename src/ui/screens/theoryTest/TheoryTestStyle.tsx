@@ -26,7 +26,12 @@ export const styles = StyleSheet.create({
 
     },
 
-    
+    video: {
+        flex:1,
+        width:300,
+        height: 300
+    }
+   
 
 
 });

@@ -51,7 +51,7 @@ const renderTask: ListRenderItem<Task> = ({item}) => {
 // Componente ChecklistScreen
 export const ChecklistScreen: React.FC = () => {
   return (
-    <>
+
     <View style={styles.container}>
       <FlatList
         data={tasks}
@@ -59,19 +59,7 @@ export const ChecklistScreen: React.FC = () => {
         keyExtractor={(item, index) => index.toString()}
       />
     </View>
-                 <View style={styles.video}>
-                 <WebView
-                     source={{ uri: `https://player.vimeo.com/video/911978678?badge=0&autopause=0&player_id=0&app_id=58479` }}
-                     allowsInlineMediaPlayback={true}
-                     mediaPlaybackRequiresUserAction={false}
-                     scrollEnabled={false}
-                     startInLoadingState={true}
-                     javaScriptEnabled={true}
-                     domStorageEnabled={true}
-
-                 />                    
-                 </View>
-                 </>
+           
 
   );
 };
