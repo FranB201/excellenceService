@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor:'#F8F8FF'
     },
 
     headerStyle: {
@@ -11,13 +12,19 @@ export const styles = StyleSheet.create({
       color:'white',
       padding: 10,
       backgroundColor: '#6b6c70',
+      
 /*       backgroundColor: '#525F7F',
  */  },
 
- video: {
-  width:400,
-  height: 300
-}
+    title:{
+
+      textAlign: 'center',
+      fontSize: 25,
+      padding: 10,
+      fontFamily:'Montserrat'
+
+
+    }
 
 
   });

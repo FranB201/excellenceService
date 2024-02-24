@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
     scrollViewContainer: {
         flexGrow: 1, // Asegura que el contenedor pueda expandirse para ajustarse al contenido
         justifyContent: 'center', // Centra el contenido cuando no es más alto que la pantalla
-        paddingHorizontal: 20, // Agrega relleno horizontal para no pegar el contenido a los bordes
     },
     
 
