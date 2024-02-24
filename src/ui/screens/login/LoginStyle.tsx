@@ -30,7 +30,7 @@ export const loginStyle = StyleSheet.create({
         width: 370,
         height: 400,
         borderRadius: 25,
-        backgroundColor: 'rgba(247, 255, 248, 0.7)', 
+        backgroundColor: 'rgba(248, 248, 255, 0.6)',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 30,

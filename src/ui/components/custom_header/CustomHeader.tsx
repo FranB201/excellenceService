@@ -21,7 +21,7 @@ export const CustomHeader = () => {
           '#cbe2d8',    // Aún más claro
           '#d2e7dc',    // Más claro
           '#daece1',    // Cerca del tono medio entre B5D4CC y F7FFF6
-          '#f6fff5']}
+          '#F8F8FF']}
         start={{ x: 0, y: 0 }} // Comienzo del gradiente en la parte superior
         end={{ x: 0, y: 1 }} // Final del gradiente en la parte inferior
       >
