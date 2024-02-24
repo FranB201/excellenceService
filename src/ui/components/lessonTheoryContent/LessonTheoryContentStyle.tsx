@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
       lineHeight: 24,
       marginTop: 5,
       marginLeft: 10, // Para indentar los bullet points
-      color: '#444', // Un color neutro para el texto
   },
   bulletPointContainer: {
       marginTop: 10,

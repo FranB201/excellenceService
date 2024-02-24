@@ -14,5 +14,11 @@ export const styles = StyleSheet.create({
 /*       backgroundColor: '#525F7F',
  */  },
 
+ video: {
+  width:400,
+  height: 300
+}
+
+
   });
   
