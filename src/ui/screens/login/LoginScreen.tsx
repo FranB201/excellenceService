@@ -8,9 +8,15 @@ import { useNavigation } from '@react-navigation/native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useForm } from '../../hooks/useForm'
 import { AuthContext } from '../../../context/AuthContext'
+import SplashScreen from 'react-native-splash-screen'
 
 
 export const LoginScreen = () => {
+
+    useEffect(() => {
+        SplashScreen.hide();
+    }, [])
+    
 
     const navigation = useNavigation();
     const [forgotEmail, setForgotEmail] = useState('');
