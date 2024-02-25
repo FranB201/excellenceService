@@ -11,17 +11,17 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
       color:'white',
       padding: 10,
-      backgroundColor: '#6b6c70',
-      
-/*       backgroundColor: '#525F7F',
- */  },
+      backgroundColor: 'rgba(107, 108, 112, 0.6)',
+    },
 
     title:{
 
       textAlign: 'center',
-      fontSize: 25,
+      fontSize: 22,
       padding: 10,
-      fontFamily:'Montserrat'
+      fontFamily:'Montserrat-Black',
+      color: 'rgba(107, 108, 112, 10)',
+
 
 
     }

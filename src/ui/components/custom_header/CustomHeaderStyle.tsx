@@ -14,11 +14,11 @@ export const styles = StyleSheet.create({
       height: '100%',
     },
     headerTitle: {
-      fontWeight: 'bold',
-      fontSize: 22,
+      fontSize: 20,
       marginTop: 35,
       marginLeft: 10,
-      color: '#567568'
+      color: 'rgba(0, 0, 0, 0.7)',
+      fontFamily: 'Montserrat'
       // Otros estilos para el título
     },
     menuIcon: {

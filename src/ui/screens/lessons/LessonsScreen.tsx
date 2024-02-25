@@ -4,6 +4,7 @@ import { styles } from './LessonsStyle'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/Navigator';
+import { CustomText } from '../../components/atoms/customText/CustomText';
 
 interface CardProps {
   lessonId: number,
@@ -72,8 +73,8 @@ export const LessonsScreen: React.FC = () => {
     return (
       <View style={[styles.card, { width: windowWidth }]}>
         <View style={styles.contentContainer}>
-          <Text style={styles.cardTitle}>{title}</Text>
-          <Text style={styles.cardSubtitle}>{subtitle}</Text>
+          <CustomText style={styles.cardTitle}>{title}</CustomText>
+          <CustomText style={styles.cardSubtitle}>{subtitle}</CustomText>
         </View>
 
         <View style={styles.buttonContainer}>

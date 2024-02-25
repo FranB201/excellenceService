@@ -1,20 +1,25 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { styles } from './CardBaseStyle';
+import { CustomText } from '../atoms/customText/CustomText';
 
 interface CardProps {
   title: string;
+  subtitle: string;
   image: string;
-  rating: string; 
+  rating: string;
   fullWidth: boolean;
+  onPress: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({ title, image, rating,fullWidth }) => (
-  <View style={fullWidth ? styles.fullWidthCard : styles.card}>
-    <Image 
+export const Card: React.FC<CardProps> = ({ title, subtitle, image, rating, fullWidth, onPress }) => (
+
+  <TouchableOpacity onPress={onPress} style={fullWidth ? styles.fullWidthCard : styles.card}>
+    <Image
       source={typeof image === 'string' ? { uri: image } : image}
       style={styles.cardImage}
     />
-    <Text style={[styles.cardTitle, fullWidth && styles.cardTitleFullWidth]}>{title}</Text>
-  </View>
+    <CustomText style={[styles.cardTitle, fullWidth && styles.cardTitleFullWidth]}>{title}</CustomText>
+    <CustomText style={[styles.cardSubtitle, fullWidth && styles.cardTitleFullWidth]}>{subtitle}</CustomText>
+  </TouchableOpacity>
 );

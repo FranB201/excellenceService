@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { styles } from './CheckTaskStyle';
 import { IncidencePopUp } from '../pop_ups/incidencePopUp/IncidencePopUp';
+import { CustomText } from '../atoms/customText/CustomText';
 
 
 interface CheckTaskProps {
@@ -38,7 +39,7 @@ export const CheckTask: React.FC<CheckTaskProps> = ({ description }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.description}>{description}</Text>
+            <CustomText style={styles.description}>{description}</CustomText>
             <View style={styles.checksContainer}>
                 <TouchableOpacity onPress={() => handleCheck('blue')}>
                     <Ionicons name="checkmark-circle" size={30} color={status.blue ? 'blue' : 'grey'} />

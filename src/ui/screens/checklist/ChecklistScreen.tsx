@@ -2,6 +2,7 @@ import React from 'react';
 import { View, FlatList, ListRenderItem, Text, ScrollView, Dimensions } from 'react-native';
 import { CheckTask } from '../../components/checkTask/CheckTask'; // Asegúrate de importar CheckTask
 import { styles } from './ChecklistStyle';
+import { CustomText } from '../../components/atoms/customText/CustomText';
 
 const { width } = Dimensions.get('window');
 
@@ -118,7 +119,7 @@ const checklists: Checklist[] = [
 
 const renderTask: ListRenderItem<Task> = ({ item }) => {
   if (item.type === 'header') {
-    return <Text style={styles.headerStyle}>{item.title}</Text>;
+    return <CustomText style={styles.headerStyle}>{item.title}</CustomText>;
   } else if (item.type === 'task') {
     return <CheckTask description={item.description!} />;
   }

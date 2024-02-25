@@ -5,6 +5,7 @@ import MyDrawer from './DrawerNavigator';
 import { CustomHeader } from '../components/custom_header/CustomHeader';
 import { TestScreen } from '../screens/test/TestScreen';
 import { TheoryTestScreen } from '../screens/theoryTest/TheoryTestScreen';
+import { DetailsItemScreen } from '../screens/Restaurant/details_Item/DetailsItemScreen';
 
 
 
@@ -13,6 +14,7 @@ export type RootStackParamList = {
   HomeScreen: undefined;
   Test: undefined;
   TheoryTest: { lessonId: number };
+  DetailsItemScreen: { itemId: number };
   Main: undefined;
 };
 
@@ -31,6 +33,7 @@ export const  Navigator = () => {
         <Stack.Screen name="HomeScreen" options={{title:"Home", headerBackTitle:"Home"}} component={HomeScreen} />
         <Stack.Screen name="Test" component={TestScreen} />
         <Stack.Screen name="TheoryTest" component={TheoryTestScreen} />
+        <Stack.Screen name="DetailsItemScreen" component={DetailsItemScreen} />
 
         <Stack.Screen name="Main" component={MyDrawer} />
 

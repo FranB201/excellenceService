@@ -57,6 +57,14 @@
 	<array>
 		<string>Adelia.ttf</string>
 		<string>Montserrat.ttf</string>
+		<string>Montserrat-Black.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
+		<string>Montserrat-BoldItalic.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>Montserrat-Italic.ttf</string>
+		<string>Ionicons-Light.ttf</string>
+		<string>Ionicons-Medium.ttf</string>
+		<string>Ionicons-SemiBold.ttf</string>
 		<string>Ionicons.ttf</string>
 	</array>
 </dict>
