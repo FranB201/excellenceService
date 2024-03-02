@@ -16,7 +16,7 @@ export const LoginScreen = () => {
     useEffect(() => {
         SplashScreen.hide();
     }, [])
-    
+
 
     const navigation = useNavigation();
     const [forgotEmail, setForgotEmail] = useState('');
@@ -64,8 +64,15 @@ export const LoginScreen = () => {
 
     return (
 
-        <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: '#b5d4cc' }}>
-
+        <KeyboardAwareScrollView
+            style={{ flex: 1, backgroundColor: '#b5d4cc' }}
+            resetScrollToCoords={{ x: 0, y: 0 }}
+            contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} // Ajustado para centrar el contenido verticalmente
+            scrollEnabled={true}
+            extraHeight={150} // Ajusta este valor según sea necesario
+            enableOnAndroid={true}
+            keyboardShouldPersistTaps="handled" // Esto permite tocar fuera del teclado para cerrarlo
+        >
             <View style={loginStyle.container}>
                 <Logo />
 
@@ -83,6 +90,7 @@ export const LoginScreen = () => {
                             placeholderTextColor="rgba(0, 0, 0, 0.7)"
                             onChangeText={(value) => onChange(value, 'email')}
                             value={email}
+                            autoCapitalize="none"
                         />
                     </View>
 
@@ -96,13 +104,14 @@ export const LoginScreen = () => {
                             placeholderTextColor="rgba(0, 0, 0, 0.7)"
                             onChangeText={(value) => onChange(value, 'password')}
                             value={password}
+                            autoCapitalize="none"
                         />
                     </View>
                     <View style={loginStyle.forgotPassword}>
-                    <TouchableOpacity activeOpacity={0.8}>
-                        <Text style={loginStyle.buttonForget}>¿Olvidaste tu contraseña?</Text>
-                    </TouchableOpacity>
-                </View>
+                        <TouchableOpacity activeOpacity={0.8}>
+                            <Text style={loginStyle.buttonForget}>¿Olvidaste tu contraseña?</Text>
+                        </TouchableOpacity>
+                    </View>
 
                     {/* Botón de Login */}
                     <TouchableOpacity
@@ -110,7 +119,7 @@ export const LoginScreen = () => {
                         style={loginStyle.button}
                         onPress={onLogin}
                     >
-                        <Text style={loginStyle.buttonText}>Log in</Text>
+                        <Text style={loginStyle.buttonText}>Acceder</Text>
                     </TouchableOpacity>
                 </View>
             </View>
