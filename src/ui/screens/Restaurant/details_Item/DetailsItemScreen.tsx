@@ -1,9 +1,10 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React from 'react'
-import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { Image, ImageSourcePropType, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from './DetailsItemsStyle';
 import { CustomText } from '../../../components/atoms/customText/CustomText';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { CustomModal } from '../../../components/pop_ups/customModal/CustomModal';
 
 
 interface Allergen {
@@ -11,12 +12,18 @@ interface Allergen {
   icon: string;
 }
 
+interface Ingredient {
+  name: string;
+  description?: string;
+  image?: ImageSourcePropType;
+}
+
 interface ItemDetail {
   itemId: number;
   title: string;
   subtitle: string;
   description: string;
-  ingredients: string[];
+  ingredients: Ingredient[];
   image: ImageSourcePropType;
   rating: string;
   allergens: Allergen[];
@@ -24,13 +31,18 @@ interface ItemDetail {
 }
 
 
+
+
 const data: ItemDetail[] = [
   {
     itemId: 1, title: 'Patatas Bravas',
     subtitle: 'con salsa brava',
     description: 'Una ración de patatas cortadas en dados y fritas, acompañadas de una salsa picante.',
-    ingredients: ['Patatas', 'Salsa brava', 'Perejil'],
-    image: require('../../../assets/foodImgs/bravas.jpg'), rating: '4.8',
+    ingredients: [
+      { name: 'Patatas', description: 'Cortadas en dados y fritas' },
+      { name: 'Salsa brava', description: 'Salsa picante tradicional' },
+      // más ingredientes...
+    ], image: require('../../../assets/foodImgs/bravas.jpg'), rating: '4.8',
     allergens: [
       { name: 'Gluten', icon: 'pizza-outline' },
       { name: 'Nueces', icon: 'nutrition-outline' },
@@ -41,8 +53,12 @@ const data: ItemDetail[] = [
     itemId: 2, title: 'Tortilla española',
     subtitle: '',
     description: 'La clásica receta, de patata y cebolla.',
-    ingredients: ['Patatas', 'Salsa brava', 'Perejil'],
-    image: require('../../../assets/foodImgs/tortilla.jpeg'), rating: '4.7',
+    ingredients: [
+      { name: 'Patatas', description: 'Cortadas en dados y fritas' },
+      { name: 'Cebolla', description: 'Salsa picante tradicional' },
+      { name: 'Huevo', description: 'Salsa picante tradicional' },
+      // más ingredientes...
+    ], image: require('../../../assets/foodImgs/tortilla.jpeg'), rating: '4.7',
     allergens: [
       { name: 'Gluten', icon: 'pizza-outline' },
       { name: 'Nueces', icon: 'nutrition-outline' },
@@ -52,8 +68,11 @@ const data: ItemDetail[] = [
     itemId: 3, title: 'Pimientos del padrón',
     subtitle: '',
     description: '',
-    ingredients: ['Patatas', 'Salsa brava', 'Perejil'],
-    image: require('../../../assets/foodImgs/pimientos.jpeg'), rating: '4.7',
+    ingredients: [
+      { name: 'Patatas', description: 'Cortadas en dados y fritas' },
+      { name: 'Salsa brava', description: 'Salsa picante tradicional' },
+      // más ingredientes...
+    ], image: require('../../../assets/foodImgs/pimientos.jpeg'), rating: '4.7',
     allergens: [
       { name: 'Gluten', icon: 'pizza-outline' },
       { name: 'Nueces', icon: 'nutrition-outline' },
@@ -61,10 +80,13 @@ const data: ItemDetail[] = [
   },
   {
     itemId: 4, title: 'Albondigas en salsa',
-    subtitle: '',
+    subtitle: 'de ternera',
     description: '',
-    ingredients: ['Patatas', 'Salsa brava', 'Perejil'],
-    image: require('../../../assets/foodImgs/albondigas.jpeg'), rating: '4.7',
+    ingredients: [
+      { name: 'Carne picada', description: 'Cortadas en dados y fritas' },
+      { name: 'Guiso de ternera', description: 'Salsa picante tradicional' },
+      // más ingredientes...
+    ], image: require('../../../assets/foodImgs/albondigas.jpeg'), rating: '4.7',
     allergens: [
       { name: 'Gluten', icon: 'pizza-outline' },
       { name: 'Nueces', icon: 'nutrition-outline' },
@@ -74,8 +96,11 @@ const data: ItemDetail[] = [
     itemId: 5, title: 'Gambas al ajillo',
     subtitle: '',
     description: '',
-    ingredients: ['Patatas', 'Salsa brava', 'Perejil'],
-    image: require('../../../assets/foodImgs/gambas.jpeg'), rating: '4.7', allergens: [
+    ingredients: [
+      { name: 'Patatas', description: 'Cortadas en dados y fritas' },
+      { name: 'Salsa brava', description: 'Salsa picante tradicional' },
+      // más ingredientes...
+    ], image: require('../../../assets/foodImgs/gambas.jpeg'), rating: '4.7', allergens: [
       { name: 'Gluten', icon: 'pizza-outline' },
       { name: 'Nueces', icon: 'nutrition-outline' },
     ], category: 'Entrantes'
@@ -84,8 +109,11 @@ const data: ItemDetail[] = [
     itemId: 6, title: 'Calamares a la romana',
     subtitle: '',
     description: '',
-    ingredients: ['Patatas', 'Salsa brava', 'Perejil'],
-    image: require('../../../assets/foodImgs/calamares.jpeg'), rating: '4.7',
+    ingredients: [
+      { name: 'Patatas', description: 'Cortadas en dados y fritas' },
+      { name: 'Salsa brava', description: 'Salsa picante tradicional' },
+      // más ingredientes...
+    ], image: require('../../../assets/foodImgs/calamares.jpeg'), rating: '4.7',
     allergens: [
       { name: 'Gluten', icon: 'pizza-outline' },
       { name: 'Nueces', icon: 'nutrition-outline' },
@@ -100,20 +128,31 @@ export const DetailsItemScreen: React.FC = () => {
   const { itemId } = route.params;
   const item = data.find((item) => item.itemId === itemId);
 
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [selectedIngredient, setSelectedIngredient] = useState<Ingredient | null>(null);
+
   if (!item) {
     return <Text>Item no encontrado</Text>;
   }
 
+  // Función para abrir el modal y establecer el ingrediente seleccionado
+  const handleOpenModal = (ingredientName: string) => {
+    const ingredient = item.ingredients.find(ing => ing.name === ingredientName);
+    setSelectedIngredient(ingredient || null);
+    setModalVisible(true);
+  };
+
+
+
 
   return (
-
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Ionicons name="arrow-back-outline" size={30} />
         </TouchableOpacity>
         <CustomText style={styles.headerTitle}>Detalles</CustomText>
-        <View style={styles.backButtonPlaceholder} /> 
+        <View style={styles.backButtonPlaceholder} />
       </View>
       <ScrollView style={styles.container}>
         <View style={styles.imageShadow}>
@@ -126,12 +165,7 @@ export const DetailsItemScreen: React.FC = () => {
             <CustomText style={styles.rating}>{item.rating}</CustomText>
             <View style={styles.allergensContainer}>
               {item.allergens.map((allergen, index) => (
-                <Ionicons
-                  key={index}
-                  name={allergen.icon}
-                  size={24}
-                  style={styles.allergenIcon}
-                />
+                <Ionicons key={index} name={allergen.icon} size={24} style={styles.allergenIcon} />
               ))}
             </View>
           </View>
@@ -140,14 +174,29 @@ export const DetailsItemScreen: React.FC = () => {
           <CustomText style={styles.description}>{item.description}</CustomText>
           <CustomText style={styles.subtitleIngredients}>Ingredientes</CustomText>
           {item.ingredients.map((ingredient, index) => (
-            <CustomText key={index} style={styles.ingredientItem}>
-              • {ingredient}
-            </CustomText>
+            <View key={index} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+              <CustomText style={styles.ingredientItem}>
+                • {ingredient.name}
+              </CustomText>
+              <TouchableOpacity onPress={() => handleOpenModal(ingredient.name)}>
+                <Ionicons name="information-circle-outline" size={24} style={{ marginLeft: 5 }} />
+              </TouchableOpacity>
+            </View>
           ))}
-
         </View>
       </ScrollView>
-    </SafeAreaView>
+      <CustomModal isVisible={isModalVisible} onClose={() => setModalVisible(false)}>
+        <View style={{ padding: 20 }}>
+          <CustomText style={styles.modalTitle}>Descripción {selectedIngredient?.name}</CustomText>
+          {selectedIngredient?.description && (
+            <CustomText style={styles.modalDescription}>{selectedIngredient.description}</CustomText>
+          )}
+          {selectedIngredient?.image && (
+            <Image source={selectedIngredient.image} style={styles.modalImage} />
+          )}
+        </View>
+      </CustomModal>
 
+    </SafeAreaView>
   );
 }

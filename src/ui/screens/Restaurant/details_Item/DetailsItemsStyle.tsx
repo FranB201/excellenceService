@@ -103,4 +103,25 @@ export const styles = StyleSheet.create({
   allergenIcon: {
     marginLeft: 10, // Espacio entre íconos
   },
+
+
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  modalSubtitle: {
+    fontSize: 18,
+    marginBottom: 5,
+  },
+  modalDescription: {
+    fontSize: 16,
+  },
+  modalImage: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+    marginVertical: 10,
+  },
+
 });

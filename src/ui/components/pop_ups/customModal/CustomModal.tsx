@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import Modal from 'react-native-modal';
-import {styles} from './CustomModalStyle';
+import { styles } from './CustomModalStyle';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface CustomModalProps {
@@ -18,12 +18,17 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 }) => {
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose}>
-      <View style={styles.modalContent}>
-        <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-          <Ionicons name="close" size={30} color="black" />
-        </TouchableOpacity>
-        {children}
-      </View>
+      <View style={styles.modalContainer}>
+          <View style={styles.colorBar} />
+          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+            <Ionicons name="close" size={30} color="black" />
+          </TouchableOpacity>
+          <View style={styles.modalContent}>
+            {children}
+          </View>
+        </View>
+
+
     </Modal>
   );
 };
