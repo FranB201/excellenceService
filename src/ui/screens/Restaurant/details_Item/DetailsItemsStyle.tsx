@@ -18,10 +18,14 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   image: {
-    width: '85%',
-    height: '80%',
-    borderRadius: 25,
+    width: '85%', // Esto hará que la imagen ocupe todo el ancho disponible.
+    height: undefined, // La altura será determinada por el aspectRatio.
+    aspectRatio: 1.5, // Ajusta esto para que coincida con la relación de aspecto real de tus imágenes.
+    resizeMode: 'cover', 
     alignSelf: 'center',
+    borderRadius: 25, // Esto añade bordes redondeados a la imagen.
+    marginTop: 10, // Esto añade un m
+    marginBottom: 20, // Esto añade un m
 
   },
 
@@ -39,6 +43,10 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3,
     elevation: 5,
+    backgroundColor: 'white',
+    borderRadius: 25, // Asegúrate de que el contenedor de la imagen tenga este borderRadius
+    overflow: 'hidden', 
+
   },
 
   detailsContainer: {
@@ -83,7 +91,6 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 5,
     marginLeft: 10,
-    marginBottom: 10,
   },
 
   description: {
@@ -118,10 +125,12 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   modalImage: {
-    width: 200,
-    height: 200,
-    resizeMode: 'contain',
-    marginVertical: 10,
+    width: '100%', // Esto hará que la imagen ocupe todo el ancho del modal
+    height: undefined, // Altura indefinida para mantener la proporción de la imagen
+    aspectRatio: 1.5, // Puedes ajustar esto para la proporción deseada de tu imagen
+    resizeMode: 'cover', // Esto asegura que la imagen se escale dentro del espacio asignado
+    marginTop: 20,
+    borderRadius: 20, 
   },
 
 });

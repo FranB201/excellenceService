@@ -28,9 +28,8 @@ interface ItemDetail {
   rating: string;
   allergens: Allergen[];
   category: string;
+  funFact?: string;
 }
-
-
 
 
 const data: ItemDetail[] = [
@@ -39,15 +38,18 @@ const data: ItemDetail[] = [
     subtitle: 'con salsa brava',
     description: 'Una ración de patatas cortadas en dados y fritas, acompañadas de una salsa picante.',
     ingredients: [
-      { name: 'Patatas', description: 'Cortadas en dados y fritas' },
+      { name: 'Patatas', 
+      description: 'Originarias de Sudamérica y traídas a Europa en el siglo XVI, las patatas son un alimento básico en muchas culturas. Las patatas en esta receta son cuidadosamente seleccionadas, cortadas en dados uniformes para una cocción perfecta y luego fritas hasta alcanzar una textura dorada y crujiente por fuera, mientras se mantienen suaves y esponjosas por dentro. Son una excelente fuente de vitaminas C y B6, potasio y fibra, especialmente si se consumen con su piel.',  
+      image: require('../../../assets/foodImgs/ingredients/patatas.jpeg') },
       { name: 'Salsa brava', description: 'Salsa picante tradicional' },
-      // más ingredientes...
     ], image: require('../../../assets/foodImgs/bravas.jpg'), rating: '4.8',
     allergens: [
       { name: 'Gluten', icon: 'pizza-outline' },
       { name: 'Nueces', icon: 'nutrition-outline' },
       { name: 'Pescado', icon: 'fish-outline' },
-    ], category: 'Entrantes'
+    ], category: 'Entrantes',
+    funFact: 'Aunque hoy en día las consideramos una base de la alimentación mundial, las patatas no fueron bien recibidas inicialmente en Europa y se cultivaban solo como una curiosidad botánica. No fue hasta que la nobleza empezó a adorarlas, y se descubrieron sus propiedades nutricionales, que comenzaron a ser un alimento esencial en la dieta de muchos países.'
+
   },
   {
     itemId: 2, title: 'Tortilla española',
@@ -95,15 +97,36 @@ const data: ItemDetail[] = [
   {
     itemId: 5, title: 'Gambas al ajillo',
     subtitle: '',
-    description: '',
+    description: 'Este plato tradicional de la gastronomía española consiste en gambas frescas salteadas en aceite de oliva con ajo picado y guindilla, lo que les da un sabor picante y muy característico. Se sirven con pan fresco para no desperdiciar el sabroso aceite.',
     ingredients: [
-      { name: 'Patatas', description: 'Cortadas en dados y fritas' },
-      { name: 'Salsa brava', description: 'Salsa picante tradicional' },
-      // más ingredientes...
-    ], image: require('../../../assets/foodImgs/gambas.jpeg'), rating: '4.7', allergens: [
-      { name: 'Gluten', icon: 'pizza-outline' },
-      { name: 'Nueces', icon: 'nutrition-outline' },
-    ], category: 'Entrantes'
+      { 
+        name: 'Gambas', 
+        description: 'Las gambas son crustáceos marinos valorados en la gastronomía por su carne tierna y sabor suave y ligeramente dulce. Habitan en las profundidades del océano y son capturadas respetando su ciclo natural para garantizar su sostenibilidad. Ricas en proteínas y bajas en grasa, las gambas no solo son deliciosas, sino también una elección saludable que se adapta a una variedad de métodos culinarios.',  
+        image: require('../../../assets/foodImgs/ingredients/gamba.jpeg') 
+      },
+      { 
+        name: 'Ajo', 
+        description: 'El ajo se corta finamente y se fríe ligeramente hasta dorar, aportando un aroma y sabor inconfundible que se fusiona con las gambas durante la cocción.', 
+      },
+      { 
+        name: 'Guindilla', 
+        description: 'Añade un toque picante al plato, su uso se ajusta al gusto por el picante, pero es esencial para darle a las gambas al ajillo su carácter distintivo.', 
+      },
+      { 
+        name: 'Aceite de oliva', 
+        description: 'Usamos un aceite de oliva virgen extra de la mejor calidad, que no solo es el medio de cocción sino que también aporta un sabor profundo y enriquece la salsa.', 
+      },
+      // Puedes agregar más ingredientes si lo deseas.
+    ],
+    image: require('../../../assets/foodImgs/gambas.jpeg'), 
+    rating: '4.7', 
+    allergens: [
+      { name: 'Crustáceos', icon: 'fish-outline' }, // Cambiado de 'Gluten' a 'Crustáceos' ya que las gambas pertenecen a este grupo.
+      // Elimina o ajusta los alérgenos según los ingredientes reales de tu plato.
+    ],
+    category: 'Entrantes',
+    funFact: 'Las gambas al ajillo tienen una historia entrelazada con las tabernas españolas, donde tradicionalmente se servían en un pequeño plato de barro caliente para mantenerlas calientes. Se dice que la costumbre de servir tapas comenzó como una manera de evitar que las moscas cayeran en el vino, cubriendo las copas con un plato que contenía estos deliciosos crustáceos. Hoy en día, es uno de los platos más icónicos de España, disfrutado tanto por locales como por visitantes de todo el mundo.'
+
   },
   {
     itemId: 6, title: 'Calamares a la romana',
@@ -183,6 +206,11 @@ export const DetailsItemScreen: React.FC = () => {
               </TouchableOpacity>
             </View>
           ))}
+          
+          <CustomText style={styles.subtitleIngredients}>Sabías que...</CustomText>
+          <CustomText style={styles.modalDescription}>{item.funFact}</CustomText>
+
+
         </View>
       </ScrollView>
       <CustomModal isVisible={isModalVisible} onClose={() => setModalVisible(false)}>
@@ -196,6 +224,7 @@ export const DetailsItemScreen: React.FC = () => {
           )}
         </View>
       </CustomModal>
+
 
     </SafeAreaView>
   );
