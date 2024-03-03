@@ -2,12 +2,8 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   articuloNombre: {
-    fontSize: 16,
+    fontSize: 15,
     color: '#567568',
-    borderBottomWidth: 1,
-    borderBottomColor: '#daebe8',
-    paddingTop: 5,
-    paddingBottom: 5,
     flex: 1,
   },
   row: {
@@ -15,10 +11,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 5,
-    backgroundColor: '567568',
   },
   checkboxContainer: {
     padding: 2,
+  },
+  quantityText: {
+    fontSize: 15,
+    color: '#567568',
   },
   buttonsContainer: {
     flexDirection: 'row', // Alinea los botones horizontalmente

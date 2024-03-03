@@ -48,5 +48,9 @@ export const globalStyles = StyleSheet.create({
   p3: {
     padding: 3,
   },
+  iconStyle: {
+    fontSize: 30,
+    color: '#567568',
+  },
   // Añade más estilos globales según necesites
 });

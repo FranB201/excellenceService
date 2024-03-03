@@ -12,22 +12,21 @@ export const styles = StyleSheet.create({
   },
   titleStyle: {
     fontWeight: 'bold',
-    color: '#567568', // Una versión más oscura del color corporativo para el texto
+    fontSize:15,
+    color: '#567568', 
   },
-  iconStyle: {
-    // Considera usar un paquete como react-native-vector-icons para un diseño más pulido
-    fontSize: 18,
-    color: '#567568',
+  headerStyleProvider: {
+    marginTop:10
   },
   contentStyle: {
     padding: 10,
-    backgroundColor: '#ffffff', // Fondo blanco para el contenido expandido
+    backgroundColor: '#ffffff', 
   },
   articuloNombre: {
     fontSize: 16,
     color: '#567568',
     borderBottomWidth: 1,
-    borderBottomColor: '#daebe8', // Línea de separación suave
+    borderBottomColor: '#daebe8',
     paddingTop: 5,
     paddingBottom: 5,
   },

@@ -5,11 +5,9 @@ import {styles} from './CategoryItemStyle';
 import { Categoria } from '../../../../../common/interfaces/prov/category';
 import { Pedido } from '../../../../../common/interfaces/prov/order';
 import { Proveedor } from '../../../../../common/interfaces/prov/provider';
-
-
-// Definiendo los tipos de tus props y estados
-
-
+import { globalStyles } from '../../../../styles/GlobalStyles';
+import { Accordion } from '../../../../components/acordion/AcordionProvider';
+import { CustomText } from '../../../../components/atoms/customText/CustomText';
 interface CategoriaItemProps {
   categoria: Categoria;
   provider:Proveedor;
@@ -17,7 +15,6 @@ interface CategoriaItemProps {
   onPedidosChange: (pedidos: Pedido[]) => void;
 }
 
-// Componente CategoriaItem con TypeScript
 const CategoriaItem: React.FC<CategoriaItemProps> = ({
   categoria,
   provider,
@@ -49,23 +46,52 @@ const CategoriaItem: React.FC<CategoriaItemProps> = ({
   };
   
 
-  return (
+  /*return (
     <View>
       {categoria.articulos.map(articulo => (
+
         <View key={articulo.id} style={styles.row}>
           <Text style={styles.articuloNombre}>{articulo.nombre}</Text>
           <View style={styles.buttonsContainer}>
             <TouchableOpacity onPress={() => handleDecrement(articulo.id,)}>
-              <Ionicons name="remove-circle-outline" size={20} color="green" />
+              <Ionicons name="remove-circle-outline" style={globalStyles.iconStyle} />
             </TouchableOpacity>
-            <Text>
+            <Text style={[globalStyles.p4,styles.quantityText]}>
               {pedidos.find(p => p.articuloId === articulo.id)?.cantidad || 0}
             </Text>
             <TouchableOpacity onPress={() => handleIncrement(articulo.id,articulo.nombre)}>
-              <Ionicons name="add-circle-outline" size={20} color="green" />
+              <Ionicons name="add-circle-outline" style={globalStyles.iconStyle} />
             </TouchableOpacity>
           </View>
         </View>
+       
+      ))}
+    </View>
+  );*/
+  return (
+    <View>
+      {provider.categorias.map((categoria) => (
+        <Accordion
+          title={categoria.nombre}
+          
+        >
+          {categoria.articulos.map((articulo) => (
+            <View key={articulo.id} style={styles.row}>
+              <CustomText style={styles.articuloNombre}>{articulo.nombre}</CustomText>
+              <View style={styles.buttonsContainer}>
+              <TouchableOpacity onPress={() => handleDecrement(articulo.id,)}>
+              <Ionicons name="remove-circle-outline" style={globalStyles.iconStyle} />
+            </TouchableOpacity>
+            <CustomText style={[globalStyles.p4,styles.quantityText]}>
+              {pedidos.find(p => p.articuloId === articulo.id)?.cantidad || 0}
+            </CustomText>
+                <TouchableOpacity onPress={() => handleIncrement(articulo.id,articulo.nombre)}>
+                  <Ionicons name="add-circle-outline" style={globalStyles.iconStyle} />
+              </TouchableOpacity>
+              </View>
+            </View>
+          ))}
+        </Accordion>
       ))}
     </View>
   );

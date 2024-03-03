@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
   list: {
     flex: 1, // Asegurarse de que la lista ocupe todo el espacio disponible
   },
+
   proveedorContainer: {
     marginVertical: 5,
     paddingLeft: 10,
@@ -70,11 +71,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#567568', // Una versión más oscura del color corporativo para el texto
   },
-  iconStyle: {
-    // Considera usar un paquete como react-native-vector-icons para un diseño más pulido
-    fontSize: 18,
-    color: '#567568',
-  },
+
   contentStyle: {
     padding: 10,
     backgroundColor: '#ffffff', // Fondo blanco para el contenido expandido

@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {styles} from './OrdersScreenStyle';
-import {Accordion} from '../../components/acordion/AcordionProvider';
+import { Accordion } from '../../components/acordion/AcordionProvider';
 import {globalStyles} from '../../styles/GlobalStyles';
 import CategoriaItem from './components/categoryItem/CategoryItem';
 import {CustomModal} from '../../components/pop_ups/customModal/CustomModal';
@@ -19,7 +19,7 @@ import { proveedores } from '../../data/proveedoresData';
 import { Proveedor } from '../../../common/interfaces/prov/provider';
 import { Pedido } from '../../../common/interfaces/prov/order';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { CustomText } from '../../components/atoms/customText/CustomText';
 const OrdersScreen: React.FC = () => {
   const [isVisible, setInvisible] = React.useState(false);
   const [isVisibleProviderInfo, setInvisibleProviderInfo] = React.useState(false);
@@ -71,7 +71,7 @@ const handleOpenModalProviderInfo = () => {
         headerStyle={{...styles.proveedorContainer}}
         buttoninformation={
           <><TouchableOpacity onPress={handleOpenModalProviderInfo}>
-            <Ionicons name="information-circle-outline" size={30} />
+            <Ionicons style={globalStyles.iconStyle} name="information-circle-outline"  />
           </TouchableOpacity><CustomModal isVisible={isVisibleProviderInfo} onClose={handleCloseModalProviderInfo}>
               <Text>Reponsable: Nombre1</Text>
               <Text>Telf: 690 234 456</Text>
@@ -94,6 +94,8 @@ const handleOpenModalProviderInfo = () => {
             />
           )}
         />
+
+
       </Accordion>       
       </View>
 
@@ -118,7 +120,7 @@ const handleOpenModalProviderInfo = () => {
       />
       <View style={globalStyles.p5}>
         <TouchableOpacity onPress={() => handleOpenModal()} activeOpacity={0.8} style={globalStyles.button}>
-          <Text style={globalStyles.buttonText}>Hacer pedido</Text>
+          <CustomText style={globalStyles.buttonText}>Hacer pedido</CustomText>
         </TouchableOpacity>
         <CustomModal isVisible={isVisible} onClose={handleCloseModal}>
             <OrderDetail pedidos={pedidos}></OrderDetail>
