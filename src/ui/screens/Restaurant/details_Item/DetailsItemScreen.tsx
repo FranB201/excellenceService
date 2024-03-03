@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React, { useState } from 'react'
-import { Image, ImageSourcePropType, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ImageSourcePropType, Platform, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from './DetailsItemsStyle';
 import { CustomText } from '../../../components/atoms/customText/CustomText';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -96,7 +96,7 @@ const data: ItemDetail[] = [
   },
   {
     itemId: 5, title: 'Gambas al ajillo',
-    subtitle: '',
+    subtitle: 'con aceite de oliva y chile fresco',
     description: 'Este plato tradicional de la gastronomía española consiste en gambas frescas salteadas en aceite de oliva con ajo picado y guindilla, lo que les da un sabor picante y muy característico. Se sirven con pan fresco para no desperdiciar el sabroso aceite.',
     ingredients: [
       { 
@@ -169,7 +169,9 @@ export const DetailsItemScreen: React.FC = () => {
 
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1,
+      paddingTop: Platform.OS === 'android' ? 25 : 0, 
+      paddingBottom: Platform.OS === 'android' ? 25 : 0,  }}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Ionicons name="arrow-back-outline" size={30} />
@@ -178,9 +180,7 @@ export const DetailsItemScreen: React.FC = () => {
         <View style={styles.backButtonPlaceholder} />
       </View>
       <ScrollView style={styles.container}>
-        <View style={styles.imageShadow}>
           <Image source={item.image} style={styles.image} />
-        </View>
         <View style={styles.detailsContainer}>
           <CustomText style={styles.title}>{item.title}</CustomText>
           <CustomText style={styles.subtitle}>{item.subtitle}</CustomText>

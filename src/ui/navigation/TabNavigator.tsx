@@ -12,66 +12,63 @@ const Tab = createBottomTabNavigator();
 
 const MyTabs = () => (
   <Tab.Navigator initialRouteName="Home" >
-  <Tab.Screen 
-    name="Formación" 
-    options={{
-      tabBarIcon: ({ color, size }) => (
-        <Ionicons name="school" size={size} color="#8491A3" />
-      ),
-      header: () => <CustomHeader />,
-      headerShown: true
-    }} 
-    component={LessonsScreen} 
-  />
-  
-  <Tab.Screen 
-    name="Checklist"
-    options={{
-      tabBarIcon: ({ color, size }) => (
-        <Ionicons name="checkbox" size={size} color="#8491A3" />
-      ),
-      header: () => <CustomHeader />,
-      headerShown: true
-    }}
-    component={ChecklistScreen}
-  />
-  
-  <Tab.Screen 
-    name="Home" 
-    options={{
-      tabBarIcon: ({ color, size }) => (
-        <Ionicons name="home" size={size} color="#8491A3" />
-      ),
-      header: () => <CustomHeader />,
-      headerShown: true
-    }}
-    component={HomeScreen}
-  />
-  
-  <Tab.Screen 
-    name="Food" 
-    options={{
-      tabBarIcon: ({ color, size }) => (
-        <Ionicons name="restaurant" size={size} color="#8491A3" />
-      ),
-      header: () => <CustomHeader />,
-      headerShown: true
-    }} 
-    component={FoodStack} 
-  />
 
-  <Tab.Screen 
-    name="Drinks" 
-    options={{
-      tabBarIcon: ({ color, size }) => (
-        <Ionicons name="beer" size={size} color="#8491A3" />
-      ),
-      header: () => <CustomHeader />,
-      headerShown: true
-    }}
-    component={DrinksMenuScreen}
-  />
-</Tab.Navigator>
+    <Tab.Screen
+      name="Horarios"
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="calendar" size={size} color="#8491A3" />
+        ),
+        header: () => <CustomHeader />,
+        headerShown: true
+      }}
+      component={DrinksMenuScreen}
+    />
+    <Tab.Screen
+      name="Checklist"
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="checkbox" size={size} color="#8491A3" />
+        ),
+        header: () => <CustomHeader />,
+        headerShown: true
+      }}
+      component={ChecklistScreen}
+    />
+    <Tab.Screen
+      name="Ponte al día"
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="home" size={size} color="#8491A3" />
+        ),
+        header: () => <CustomHeader />,
+        headerShown: true
+      }}
+      component={HomeScreen}
+    />
+    <Tab.Screen
+      name="Carta"
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="restaurant" size={size} color="#8491A3" />
+        ),
+        header: () => <CustomHeader />,
+        headerShown: true
+      }}
+      component={FoodStack}
+    />
+    <Tab.Screen
+      name="Formación"
+      options={{
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="school" size={size} color="#8491A3" />
+        ),
+        header: () => <CustomHeader />,
+        headerShown: true
+      }}
+      component={LessonsScreen}
+    />
+  </Tab.Navigator>
 );
 
 export default MyTabs;

@@ -37,18 +37,6 @@ export const styles = StyleSheet.create({
     width: '18%', 
   },
 
-  imageShadow: {
-    marginTop: 5,
-    shadowColor: '#000',
-    shadowOpacity: 0.25,
-    shadowRadius: 3,
-    elevation: 5,
-    backgroundColor: 'white',
-    borderRadius: 25, // Asegúrate de que el contenedor de la imagen tenga este borderRadius
-    overflow: 'hidden', 
-
-  },
-
   detailsContainer: {
     paddingHorizontal: 20,
   },

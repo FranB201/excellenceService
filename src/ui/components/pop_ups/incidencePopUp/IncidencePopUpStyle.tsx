@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
         marginTop: 10,
     },
     button: {
-        backgroundColor: '#007bff',
+        backgroundColor: '#567568',
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 5,
