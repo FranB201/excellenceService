@@ -11,7 +11,7 @@ import FoodStack from './FoodStack';
 const Tab = createBottomTabNavigator();
 
 const MyTabs = () => (
-  <Tab.Navigator initialRouteName="Home" >
+  <Tab.Navigator initialRouteName="Ponte al día" >
 
     <Tab.Screen
       name="Horarios"
