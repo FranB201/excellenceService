@@ -96,7 +96,10 @@ export const styles = StyleSheet.create({
   },
 
   allergenIcon: {
-    marginLeft: 10, // Espacio entre íconos
+    marginLeft: 10,
+    width: 24,
+    height: 24
+
   },
 
 

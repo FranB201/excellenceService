@@ -9,9 +9,9 @@ export const styles = StyleSheet.create({
     headerStyle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color:'white',
+      color:'rgba(107, 108, 112, 10)',
       padding: 10,
-      backgroundColor: 'rgba(107, 108, 112, 0.6)',
+      backgroundColor: '#b5d4cc',
     },
 
     title:{

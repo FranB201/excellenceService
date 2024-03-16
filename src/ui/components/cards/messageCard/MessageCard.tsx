@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { MessageCardStyle } from './MessageCardStyle'; // Asegúrate de importar tus estilos
 import { InputAvatar } from '../../inputs/InputAvatar';
+import { CustomText } from '../../atoms/customText/CustomText';
 
 
 function getAvatarUri(avatarName: string) {
@@ -31,13 +32,13 @@ export const MessageCard = ({
                     style={MessageCardStyle.avatar}
                 />
                 <View style={MessageCardStyle.headerText}>
-                    <Text style={MessageCardStyle.name}>{
+                    <CustomText style={MessageCardStyle.name}>{
 
-                        name}</Text>
-                    <Text style={MessageCardStyle.date}>{date}</Text>
+                        name}</CustomText>
+                    <CustomText style={MessageCardStyle.date}>{date}</CustomText>
                 </View>
             </View>
-            <Text style={MessageCardStyle.messageText}>{messageText}</Text>
+            <CustomText style={MessageCardStyle.messageText}>{messageText}</CustomText>
             <InputAvatar 
                 placeh='Añade un comentario'/>
         </View>

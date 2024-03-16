@@ -87,7 +87,6 @@ const data: ItemDetail[] = [
     ingredients: [
       { name: 'Carne picada', description: 'Cortadas en dados y fritas' },
       { name: 'Guiso de ternera', description: 'Salsa picante tradicional' },
-      // más ingredientes...
     ], image: require('../../../assets/foodImgs/albondigas.jpeg'), rating: '4.7',
     allergens: [
       { name: 'Gluten', icon: 'pizza-outline' },
@@ -101,7 +100,7 @@ const data: ItemDetail[] = [
     ingredients: [
       { 
         name: 'Gambas', 
-        description: 'Las gambas son crustáceos marinos valorados en la gastronomía por su carne tierna y sabor suave y ligeramente dulce. Habitan en las profundidades del océano y son capturadas respetando su ciclo natural para garantizar su sostenibilidad. Ricas en proteínas y bajas en grasa, las gambas no solo son deliciosas, sino también una elección saludable que se adapta a una variedad de métodos culinarios.',  
+        description: 'Las gambas son crustáceos marinos valorados en la gastronomía por su carne tierna, sabor suave y ligeramente dulce. Habitan en las profundidades del océano y son capturadas respetando su ciclo natural para garantizar su sostenibilidad. Ricas en proteínas y bajas en grasa, las gambas no solo son deliciosas, sino también una elección saludable que se adapta a una variedad de métodos culinarios.',  
         image: require('../../../assets/foodImgs/ingredients/gamba.jpeg') 
       },
       { 
@@ -142,6 +141,34 @@ const data: ItemDetail[] = [
       { name: 'Nueces', icon: 'nutrition-outline' },
     ], category: 'Entrantes'
   },
+
+  {
+    itemId: 41, title: 'Mojito',
+    subtitle: 'con ron',
+    description: 'El Mojito es un cóctel tradicional cubano que combina ron, azúcar, lima, hierbabuena y soda para crear una bebida refrescante y aromática. Ideal para disfrutar en un día caluroso, su equilibrio perfecto de dulzura, cítricos y hierbas lo convierte en un favorito mundial.',
+    ingredients: [
+      { name: '1/2 Lima', 
+      description: 'Para cortar la lima, primero se descartan las puntas que proporcionan una acidez indeseada. Cortamos por la mitad y otra vez por la mitad obteniendo 4 piezas las cuales utilizaremos para el cocktail.',  
+      image: require('../../../assets/drinkImgs/cocktails//ingredients/limaCortada.jpeg') },
+      { name: '2 cucharadas de azúcar moreno', description: 'El azúcar moreno es el perfecto balanceador de sabores. Crea un perfecto balance entre el cítrico de la lima con el dulce. No debemos olvidar que el ron está hecho de caña de azúcar por lo que el azúcar es el ingrediente que no puede faltar en un mojito.' },
+      { name: '8 hojas de hierbabuena', description: 'La hierbabuena, con su distintivo aroma fresco y sabor mentolado, es un ingrediente esencial en la coctelería, donde se utiliza para agregar una dimensión refrescante y aromática a una variedad de bebidas. Su uso más famoso es en el Mojito. Además, la hierbabuena se emplea en la elaboración de otros cócteles, como el Mint Julep, aportando un toque fresco que realza los sabores de los demás ingredientes y brinda una experiencia sensorial única. Su presencia en los cócteles no solo mejora el sabor, sino que también añade un elemento decorativo y aromático.' },
+      { name: '50ml Ron blanco', description: 'El ron blanco, también conocido como ron ligero o ron claro, es un destilado del jugo de caña de azúcar o de su subproducto, la melaza, que se caracteriza por su color transparente y su sabor suave y ligeramente dulce. A diferencia del ron añejo, que se envejece en barricas de madera y adquiere un color ámbar junto con un sabor más complejo y robusto, el ron blanco suele ser filtrado después de la destilación para eliminar cualquier coloración y luego se envejece por un período corto, a menudo menos de tres años, en barricas de roble o tanques de acero inoxidable. Esta breve maduración contribuye a su perfil de sabor más ligero y menos complejo, haciéndolo especialmente popular en coctelería, donde se utiliza como base para una amplia variedad de cócteles, como el Mojito, el Daiquirí y la Piña Colada, debido a su capacidad para mezclarse armoniosamente con otros ingredientes sin dominar el sabor de la bebida.' },
+      { name: 'Top Soda', description: '' },
+      { name: 'Hielo Picado', description: '' },
+    ],
+
+    image: require('../../../assets/drinkImgs/cocktails/mojito.jpg'), rating: '4.8',
+    allergens: [
+      { name: 'vaso', icon: require('../../../assets/icons/cocktailMojito.png'),},
+      { name: 'lima', icon: require('../../../assets/icons/lima.png'),},
+      { name: 'menta', icon: require('../../../assets/icons/menta.png'),},
+    ], category: 'Entrantes',
+    funFact: "El Mojito tiene sus raíces en el siglo XVI Cuba, donde se creía originalmente como un remedio medicinal. La combinación de lima y menta no solo era refrescante, sino que también ayudaba a disimular el sabor del aguardiente de caña, el precursor del ron moderno."
+
+  },
+
+
+
 ];
 
 export const DetailsItemScreen: React.FC = () => {
@@ -187,9 +214,14 @@ export const DetailsItemScreen: React.FC = () => {
           <View style={styles.ratingAndAllergensContainer}>
             <CustomText style={styles.rating}>{item.rating}</CustomText>
             <View style={styles.allergensContainer}>
-              {item.allergens.map((allergen, index) => (
-                <Ionicons key={index} name={allergen.icon} size={24} style={styles.allergenIcon} />
-              ))}
+              {item.allergens.map((allergen, index) => {
+               if (typeof allergen.icon === 'string') {
+                return <Ionicons key={index} name={allergen.icon} size={24} style={styles.allergenIcon} />;
+              } else {
+                return <Image key={index} source={allergen.icon} style={styles.allergenIcon} />;
+              }
+            })}
+
             </View>
           </View>
           <View style={styles.separator} />

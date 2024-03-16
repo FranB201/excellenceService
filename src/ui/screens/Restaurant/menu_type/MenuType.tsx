@@ -10,26 +10,26 @@ interface Item {
     title: string;
     image: string;
     rating: string;
-    category: string;
+    mainCategory: string;
   }
   const data: Item[] = [
-    { title: '', image: require('../../../assets/categories/desayunos.png'), rating: '4.8', category: 'Entrantes' },
-    { title: '', image: require('../../../assets/categories/platos.png'), rating: '4.7', category: 'Entrantes' },
-    { title: '', image: require('../../../assets/categories/postres.png'), rating: '4.7', category: 'Entrantes' },
-    { title: '', image: require('../../../assets/categories/bebidas.png'), rating: '4.7', category: 'Entrantes' },
+    { title: '', image: require('../../../assets/categories/desayunos.png'), rating: '4.8', mainCategory: 'Desayunos' },
+    { title: '', image: require('../../../assets/categories/platos.png'), rating: '4.7', mainCategory: 'Platos' },
+    { title: '', image: require('../../../assets/categories/postres.png'), rating: '4.7', mainCategory: 'Postres' },
+    { title: '', image: require('../../../assets/categories/bebidas.png'), rating: '4.7', mainCategory: 'Bebidas' },
   ];
 
   
 
 export const MenuTypeScreen: React.FC = () => {
 
-    const navigation = useNavigation();
-    const handleCardPress = (item: Item) => {
-        // Aquí puedes pasar parámetros adicionales si es necesario
-        navigation.navigate('FoodMenu', { /* parámetros aquí si los hay */ });
+  const navigation = useNavigation<MenuTypeNavigationProp>();
+  const handleCardPress = (mainCategory : string) => {
+
+        navigation.navigate('Platos', { mainCategory });
       };
       const renderItem: ListRenderItem<Item> = ({ item }) => (
-        <TouchableOpacity onPress={() => handleCardPress(item)}>
+        <TouchableOpacity onPress={() => handleCardPress(item.mainCategory)}>
           <CardCategory title={item.title} image={item.image} rating={item.rating} fullWidth={true}/>
         </TouchableOpacity>
       );

@@ -18,7 +18,7 @@ interface ListItem {
   const data: ListItem[] = [
     {
       type: 'header',
-      source: require('../../assets/homeImgs/ponteAlDia.png'),
+      source: require('../../assets/homeImgs/pontealdia.png'),
     },
     {
       type: 'input',
@@ -49,7 +49,7 @@ interface ListItem {
 const renderItem = ({ item }: { item: ListItem }) => {
     switch (item.type) {
           case 'header':
-            return <Image source={item.source} style={{ width: '95%', height: 170, marginHorizontal: 10, borderRadius: 20 }} />;
+            return <Image source={item.source} style={{ width: '95%', height: 175, marginHorizontal: 10, borderRadius: 20}} />;
           case 'input':
             return <InputAvatar placeh='Comparte algo con tu equipo...' />;
           case 'message':

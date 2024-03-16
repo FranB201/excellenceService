@@ -6,6 +6,7 @@ import { CustomHeader } from '../components/custom_header/CustomHeader';
 import { TestScreen } from '../screens/test/TestScreen';
 import { TheoryTestScreen } from '../screens/theoryTest/TheoryTestScreen';
 import { DetailsItemScreen } from '../screens/Restaurant/details_Item/DetailsItemScreen';
+import { FoodMenuScreen } from '../screens/Restaurant/food_menu/FoodMenuScreen';
 
 
 
@@ -16,6 +17,8 @@ export type RootStackParamList = {
   TheoryTest: { lessonId: number };
   DetailsItemScreen: { itemId: number };
   Main: undefined;
+  MenuType: undefined;
+  Platos: { mainCategory?: string }; 
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
