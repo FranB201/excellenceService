@@ -75,11 +75,11 @@ export const LoginScreen = () => {
         >
             <View style={loginStyle.container}>
                 <Logo />
-
+             {/*    <Text style={loginStyle.quote}>
+                    La excelencia en el servicio es el ingrediente secreto que sazona la experiencia
+                </Text> */}
                 <View style={loginStyle.loginInputsContainer}>
-                    <Text style={loginStyle.quote}>
-                        La excelencia en el servicio es el ingrediente secreto que sazona la experiencia
-                    </Text>
+
                     {/* Campo de Email */}
                     <View style={loginStyle.inputContainer}>
                         <Ionicons name="mail" size={20} color="rgba(0, 0, 0, 0.7)" style={loginStyle.icon} />

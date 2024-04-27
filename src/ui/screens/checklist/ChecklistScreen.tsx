@@ -20,19 +20,17 @@ interface Checklist {
 const checklists: Checklist[] = [
 
   {
-    title: 'Checklist salón restaurante',
+    title: 'Checklist',
     tasks: [
       { type: 'header', title: 'Apertura' },
-      { type: 'task', description: 'Sacar cojines a la terraza' },
+      { type: 'task', description: 'Barrer tarima' },
+      { type: 'task', description: 'Limpiar mesas y sillas' },
       { type: 'task', description: 'Encender lavabajillas' },
-      { type: 'task', description: 'Hacer zumo de naranja' },
+      { type: 'task', description: 'Cortar fruta para bebidas' },
       { type: 'header', title: 'Mañanas 10-13h' },
-      {
-        type: 'task',
-        description: 'Revisar/rellenar las estaciones de los camareros',
-      },
-      { type: 'task', description: 'Preparar ali-oli' },
-      { type: 'task', description: 'Limpiar máquina de zumos' },
+      { type: 'task', description: 'Revisar/rellenar las estaciones de los camareros', },
+      { type: 'task', description: 'Abrir sombrillas' },
+      { type: 'task', description: 'Realizar la limpieza pertinente' },
       { type: 'header', title: 'Medio-día 13-17h' },
       { type: 'task', description: 'Preparar cubiteras con vinos' },
       { type: 'task', description: 'Cambiar basuras' },
