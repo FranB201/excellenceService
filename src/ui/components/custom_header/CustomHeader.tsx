@@ -30,7 +30,7 @@ export const CustomHeader = () => {
           {/* Aquí puedes usar una imagen o un icono para el botón del menú */}
           <Text style={styles.menuIcon}>☰</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Chiringuito</Text>
+        <Text style={styles.headerTitle}>Nombre Restaurante</Text>
       </LinearGradient>
     </View>
   );

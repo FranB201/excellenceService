@@ -33,7 +33,7 @@ interface ListItem {
      {
       type: 'message',
       name: 'Carmen López',
-      messageText: 'Hola 👋, recordad por la revisar la máquina extractora de zumos, gracias.',
+      messageText: 'Hola 👋, recordad por la noche revisar la máquina extractora de zumos, gracias.',
       date: '22 dic',
       avatarUri: 'avatar2',
     },
@@ -49,7 +49,7 @@ interface ListItem {
 const renderItem = ({ item }: { item: ListItem }) => {
     switch (item.type) {
           case 'header':
-            return <Image source={item.source} style={{ width: '95%', height: 175, marginHorizontal: 10, borderRadius: 20}} />;
+            return <Image source={item.source} style={{ width: '95%', height: 100, marginHorizontal: 10, borderRadius: 20}} />;
           case 'input':
             return <InputAvatar placeh='Comparte algo con tu equipo...' />;
           case 'message':

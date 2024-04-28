@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
 
   selectedButton: {
     // Estilos para el botón seleccionado
-    backgroundColor: '#525F7F', // Cambia el color para resaltar
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Cambia el color para resaltar
     color: '#fff',
   },
   selectedText: {

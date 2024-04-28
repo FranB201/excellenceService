@@ -36,8 +36,6 @@ const pagesContent = [
             "La limpieza regular de la máquina de café es esencial para mantener un sabor óptimo y la higiene.",
         ],
         videoId: "911978678",
-
-
     }
 ];
 

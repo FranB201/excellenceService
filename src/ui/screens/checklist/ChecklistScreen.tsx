@@ -3,6 +3,7 @@ import { View, FlatList, ListRenderItem, Text, ScrollView, Dimensions } from 're
 import { CheckTask } from '../../components/checkTask/CheckTask'; // Asegúrate de importar CheckTask
 import { styles } from './ChecklistStyle';
 import { CustomText } from '../../components/atoms/customText/CustomText';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const { width } = Dimensions.get('window');
 
@@ -131,7 +132,13 @@ export const ChecklistScreen: React.FC = () => {
     <ScrollView horizontal pagingEnabled style={styles.container}>
       {checklists.map((checklist, index) => (
         <View key={index} style={{ width: width }}>
-          <Text style={styles.title}>{checklist.title}</Text>
+
+
+          <View style={styles.titleContainer}>
+            <Ionicons style={styles.iconArrow} name="caret-back-outline" size={24} color="rgba(0, 0, 0, 0.7)" />
+            <Text style={styles.title}>{checklist.title}</Text>
+            <Ionicons style={styles.iconArrow} name="caret-forward-outline" size={24} color="rgba(0, 0, 0, 0.7)" />
+          </View>
           <FlatList
             data={checklist.tasks}
             renderItem={renderTask}

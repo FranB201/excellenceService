@@ -14,16 +14,22 @@ export const styles = StyleSheet.create({
       backgroundColor: '#b5d4cc',
     },
 
-    title:{
+    titleContainer: {
+      flexDirection: 'row', 
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
 
+    title:{
       textAlign: 'center',
       fontSize: 22,
       padding: 10,
       fontFamily:'Montserrat-Black',
       color: 'rgba(107, 108, 112, 10)',
+    },
 
-
-
+    iconArrow:{
+      paddingHorizontal: 10
     }
 
 
