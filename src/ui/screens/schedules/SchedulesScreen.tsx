@@ -1,12 +1,9 @@
-import React from 'react'
-import { Text, View } from 'react-native'
-import { styles } from './SchedulesScreenStyle'
+// SchedulesScreen.tsx
+import React from 'react';
+import { SchedulerList } from '../../components/schedulerList/SchedulerList';
 
 
 export const SchedulesScreen = () => {
-    return (
-        <View style={styles.container}>
-        <Text>Hello World!</Text>
-        </View>
-    )
+    
+    return <SchedulerList />;
 }

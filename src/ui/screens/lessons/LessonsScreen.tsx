@@ -53,6 +53,12 @@ const data = [
     subtitle: "El arte del café",
     content: ["5.1 Lección", "Lección 5.2"]
   },
+    {
+    lessonId: 6,
+    title: "Tema 6",
+    subtitle: "La caña perfecta",
+    content: ["5.1 Lección", "Lección 5.2"]
+  },
 ];
 
 type LessonsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'LessonsScreen'>;

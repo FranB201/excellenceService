@@ -12,15 +12,15 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
       marginBottom: 20,
       textAlign: 'center',
-      color: '#6B4E31', // Color café oscuro para el título
+      color: 'rgba(107, 108, 112, 10)',
   },
   subtitle: {
     fontSize: 18,
     fontWeight: '600',
     marginTop: 10,
-    color: '#9C7A54', // Un color café más claro para los subtítulos
+    color: 'rgba(107, 108, 112, 10)',
     borderBottomWidth: 2,
-    borderBottomColor: '#D9A760', // Una línea para subrayar los subtítulos
+    borderBottomColor: 'rgba(107, 108, 112, 10)',
     paddingBottom: 4,
   },
   bulletPoint: {
@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
       lineHeight: 24,
       marginTop: 5,
       marginLeft: 10, // Para indentar los bullet points
+      borderRadius:20
   },
   bulletPointContainer: {
       marginTop: 10,

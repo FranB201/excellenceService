@@ -6,39 +6,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { LessonTheoryContent } from '../../components/lessonTheoryContent/LessonTheoryContent';
 import { RootStackParamList } from '../../navigation/Navigator';
+import { pagesContent, LessonData } from './lessonData';
 import VideoPlayer from '../../components/videoPlayer/VideoPlayer';
 
-
-const pagesContent = [
-    {
-        lessonId: 1,
-        title: "¿Quienes somos?",
-        subtitles: ["Subtítulo 1.1", "Subtítulo 1.2"],
-        videoId: require('../../assets/video/artecalentarleche.mp4'),
-        bulletPoints: ["Punto 1.1", "Punto 1.2", "Punto 1.3"],
-    },
-    {
-        lessonId: 2,
-        title: "Uniforme",
-        subtitles: ["Subtítulo 2.1", "Subtítulo 2.2"],
-
-        bulletPoints: ["Punto 2.1", "Punto 2.2"],
-    },
-
-    {
-        lessonId: 5,
-        title: "El arte del café",
-        subtitles: ["1. Origen del Café", "2. Variedades y Características", "3. Pasos para un Buen Café", "4. Limpieza de la Máquina de Café"],
-        bulletPoints: [
-            "El café tiene su origen en Etiopía, con registros que datan del siglo IX.",
-            "Las principales variedades de café son Arábica y Robusta, cada una con características distintivas en sabor, nivel de cafeína y condiciones de cultivo.",
-            "Para realizar un buen café es crucial la calidad del grano, la molienda adecuada, la temperatura y la presión del agua.",
-            "La limpieza regular de la máquina de café es esencial para mantener un sabor óptimo y la higiene.",
-        ],
-        
-        videoId: require('../../assets/video/artecalentarleche.mp4'),
-    }
-];
 
 type TheoryTestRouteProp = RouteProp<RootStackParamList, 'TheoryTest'>;
 
