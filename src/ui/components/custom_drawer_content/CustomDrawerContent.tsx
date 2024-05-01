@@ -1,43 +1,84 @@
 import React from 'react';
-import {View, Image, Text} from 'react-native';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { Navigator } from '../../navigation/Navigator';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerItem, 
+  DrawerItem,
   // Cambio aquí: Usar DrawerContentProps
 } from '@react-navigation/drawer';
+import { styles } from './CustomDrawerContentStyle';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 
 export const CustomDrawerContent: React.FC<any> = props => {
   return (
-    <DrawerContentScrollView {...props}>
-      <View style={{padding: 20, backgroundColor: '#fff'}}>
-        <Image
-          source={require('../../assets/login/avatar.png')}
-          style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
+    <View style={{ flex: 1 }}>
+
+      <DrawerContentScrollView {...props} contentContainerStyle={styles.container}>
+        <View style={styles.header}>
+          <Image
+            source={require('../../assets/avatarUser/avatar1.png')}
+            style={styles.avatar}
+          />
+          <Text style={styles.name}>Fran Bolufer</Text>
+          <Text style={styles.info}>Rango: Camarero</Text>
+          <View style={styles.excellenceContainer}>
+            <Text style={styles.excellenceText}>Excelencia:</Text>
+            <View style={styles.ratingContainer}>
+              <Ionicons name="star" size={20} style={styles.starIcon} />
+              <Ionicons name="star" size={20} style={styles.starIcon} />
+              <Ionicons name="star" size={20} style={styles.starIcon} />
+              <Ionicons name="star" size={20} style={styles.starIcon} />
+              <Ionicons name="star-half" size={20} style={styles.starIcon} />
+            </View>
+          </View>
+        </View>
+
+        <DrawerItem
+          label="Pedidos"
+          onPress={() => props.navigation.navigate('Orders')}
+          style={styles.drawerItem}
         />
-        <Text style={{fontWeight: 'bold'}}>Catherine Marin</Text>
-        <Text>Rango: Camarera</Text>
-        <Text>Excelencia: ★★★★☆</Text>
-      </View>
 
-      <DrawerItem
-        label="Pedidos"
-        onPress={() => props.navigation.navigate('Orders')}// Navega a la pantalla de pedidos
-      />
+        <DrawerItem
+          label="Horarios"
+          onPress={() => props.navigation.navigate('Schedules')}
+          style={styles.drawerItem}
+        />
+        <DrawerItem
+          label="Vacaciones"
+          onPress={() => props.navigation.navigate('Schedules')}
+          style={styles.drawerItem}
+        />
+        <DrawerItem
+          label="Sugerencias"
+          onPress={() => props.navigation.navigate('Schedules')}
+          style={styles.drawerItem}
+        />
+      </DrawerContentScrollView>
 
-      <DrawerItem
-        label="Horarios"
-        onPress={() => props.navigation.navigate('Schedules')} // Navega a la pantalla de horarios
-      />
 
-      <DrawerItem
-        label="Logout"
+      <TouchableOpacity
         onPress={() => {
           // Realiza la acción de logout
         }}
-      />
-    </DrawerContentScrollView>
+        style={[styles.logoutButton]}
+      >
+        <Text style={styles.logoutText}>Cerrar sesión</Text>
+      </TouchableOpacity>
+
+
+      <View style={styles.logoContainer}>
+        <Image
+          source={require('../../assets/logo/logoNegroSinFondo.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+      </View>
+    </View>
+
   );
 };

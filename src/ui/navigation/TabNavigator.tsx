@@ -5,6 +5,7 @@ import { CustomHeader } from '../components/custom_header/CustomHeader';
 import { DrinksMenuScreen } from '../screens/drink_menu/DrinksMenuScreen';
 import { ChecklistScreen } from '../screens/checklist/ChecklistScreen';
 import { LessonsScreen } from '../screens/lessons/LessonsScreen';
+import { SchedulesScreen } from '../screens/schedules/SchedulesScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FoodStack from './FoodStack';
 
@@ -22,7 +23,7 @@ const MyTabs = () => (
         header: () => <CustomHeader />,
         headerShown: true
       }}
-      component={DrinksMenuScreen}
+      component={SchedulesScreen}
     />
     <Tab.Screen
       name="Checklist"

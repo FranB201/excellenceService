@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { WebView } from 'react-native-webview';
+import Video from 'react-native-video';
 import { styles } from './VideoPlayerStyle';
 
 
 
-const VideoPlayer = ({ videoId }) => {
-  const vimeoUrl = `https://player.vimeo.com/video/${videoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`;
+interface VideoPlayerProps {
+  videoId: number; // Opcional si ya no necesitas esto
+}
+
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoId }) => {
+
+/*   const videoUrl = `https://vimeo.com/${videoId}`;
+     const localVideo = require('../../assets/video/artecalentarleche.mp4');
+*/
+  const localVideo = videoId;
+  const [isPaused, setIsPaused] = useState(true);
+
 
   return (
     <View style={styles.container}>
-      <WebView
-        source={{ uri: vimeoUrl }}
-        allowsInlineMediaPlayback={true}
-        mediaPlaybackRequiresUserAction={false}
-        style={{ width: '100%', height: 300 }}
-        javaScriptEnabled={true}
-        domStorageEnabled={true}
-        startInLoadingState={true}
-        mixedContentMode="compatibility"
-        allowsFullscreenVideo={true}  // Asegúrate de permitir video en pantalla completa
-      />
+      <Video
+/*         source={{ uri: videoUrl }}
+*/  
+        source={localVideo}
+        style={styles.video}
+        resizeMode="cover"
+        paused={isPaused}
+        controls={true} 
+       />
     </View>
   );
 };

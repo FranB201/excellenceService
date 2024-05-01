@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './TheoryTestStyle'
@@ -14,7 +14,7 @@ const pagesContent = [
         lessonId: 1,
         title: "¿Quienes somos?",
         subtitles: ["Subtítulo 1.1", "Subtítulo 1.2"],
-        videoId: "911978678",
+        videoId: require('../../assets/video/artecalentarleche.mp4'),
         bulletPoints: ["Punto 1.1", "Punto 1.2", "Punto 1.3"],
     },
     {
@@ -35,7 +35,8 @@ const pagesContent = [
             "Para realizar un buen café es crucial la calidad del grano, la molienda adecuada, la temperatura y la presión del agua.",
             "La limpieza regular de la máquina de café es esencial para mantener un sabor óptimo y la higiene.",
         ],
-        videoId: "911978678",
+        
+        videoId: require('../../assets/video/artecalentarleche.mp4'),
     }
 ];
 
